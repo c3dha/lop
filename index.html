@@ -1661,45 +1661,7 @@ display:block ;
 
  <script>
 
-    const next = document.querySelector(".carousel__btn--next");
-    const back = document.querySelector(".carousel__btn--back");
-    const carousel = document.querySelector(".carousel__cards");
-    let angle = 0;
-    let isMouseOver = false;
-
-    function rotateCarousel() {
-      if (!isMouseOver) {
-        angle += 45; // Thay đổi góc xoay để xoay từ trái sang phải
-        carousel.style.transform = `translateZ(-25rem) rotateY(${angle}deg)`;
-      }
-    }
-
-    // Tự động xoay carousel mỗi 1 giây
-    setInterval(rotateCarousel, 1000);
-
-    // Xử lý sự kiện click nút Next
-    next.addEventListener("click", () => {
-      angle -= 45;
-      carousel.style.transform = `translateZ(-25rem) rotateY(${angle}deg)`;
-    });
-
-    // Xử lý sự kiện click nút Prev
-    back.addEventListener("click", () => {
-      angle += 45;
-      carousel.style.transform = `translateZ(-25rem) rotateY(${angle}deg)`;
-    });
-
-    // Xử lý sự kiện khi đưa chuột vào ảnh
-    const images = document.querySelectorAll(".carousel__img");
-    images.forEach((image) => {
-      image.addEventListener("mouseenter", () => {
-        isMouseOver = true;
-      });
-
-      image.addEventListener("mouseleave", () => {
-        isMouseOver = false;
-      });
-    });
+const _0x2036f2=_0x102d;function _0x102d(_0x5ea25c,_0x1512f2){const _0x4b1e8c=_0x4b1e();return _0x102d=function(_0x102da3,_0x4c5f8c){_0x102da3=_0x102da3-0xd8;let _0x328f36=_0x4b1e8c[_0x102da3];return _0x328f36;},_0x102d(_0x5ea25c,_0x1512f2);}(function(_0x51aab4,_0xd3a6db){const _0x35188c=_0x102d,_0x1f48ac=_0x51aab4();while(!![]){try{const _0x39da14=-parseInt(_0x35188c(0xe9))/0x1*(parseInt(_0x35188c(0xec))/0x2)+parseInt(_0x35188c(0xdc))/0x3+-parseInt(_0x35188c(0xe6))/0x4+-parseInt(_0x35188c(0xe7))/0x5*(-parseInt(_0x35188c(0xd9))/0x6)+parseInt(_0x35188c(0xe0))/0x7+-parseInt(_0x35188c(0xe8))/0x8*(parseInt(_0x35188c(0xde))/0x9)+-parseInt(_0x35188c(0xdd))/0xa*(-parseInt(_0x35188c(0xe1))/0xb);if(_0x39da14===_0xd3a6db)break;else _0x1f48ac['push'](_0x1f48ac['shift']());}catch(_0x4ea899){_0x1f48ac['push'](_0x1f48ac['shift']());}}}(_0x4b1e,0x404a8));const next=document['querySelector'](_0x2036f2(0xda)),back=document[_0x2036f2(0xdf)]('.carousel__btn--back'),carousel=document['querySelector']('.carousel__cards');let angle=0x0,isMouseOver=![];function rotateCarousel(){const _0x1adb76=_0x2036f2;!isMouseOver&&(angle+=0x2d,carousel[_0x1adb76(0xdb)][_0x1adb76(0xd8)]=_0x1adb76(0xeb)+angle+_0x1adb76(0xe5));}setInterval(rotateCarousel,0x3e8),next['addEventListener']('click',()=>{const _0x23070b=_0x2036f2;angle-=0x2d,carousel['style'][_0x23070b(0xd8)]='translateZ(-25rem)\x20rotateY('+angle+_0x23070b(0xe5);}),back[_0x2036f2(0xe3)]('click',()=>{const _0x33e68b=_0x2036f2;angle+=0x2d,carousel[_0x33e68b(0xdb)][_0x33e68b(0xd8)]=_0x33e68b(0xeb)+angle+_0x33e68b(0xe5);});const images=document['querySelectorAll'](_0x2036f2(0xea));function _0x4b1e(){const _0x32c96d=['deg)','1342528pZuxjs','159415cbVQZs','209688LcnoGq','15482Plxprr','.carousel__img','translateZ(-25rem)\x20rotateY(','18uPPGsY','transform','30fFpwyA','.carousel__btn--next','style','1009473NXiYaW','25450UGqVkK','54BWXjhS','querySelector','1497167oORNTs','803XJhZWo','mouseenter','addEventListener','forEach'];_0x4b1e=function(){return _0x32c96d;};return _0x4b1e();}images[_0x2036f2(0xe4)](_0x1925ce=>{const _0x22294b=_0x2036f2;_0x1925ce[_0x22294b(0xe3)](_0x22294b(0xe2),()=>{isMouseOver=!![];}),_0x1925ce[_0x22294b(0xe3)]('mouseleave',()=>{isMouseOver=![];});});
   </script>
 </body>
 </html>
