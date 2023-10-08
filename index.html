@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>HAPPY BIRDTHDAY TO YOU</title>
+
   <style>
     html {
       box-sizing: border-box;
@@ -52,7 +53,7 @@
     }
 
     .carousel__img:hover {
-      transform: scale(1.1); /* Khi đưa chuột vào, làm ảnh phóng to */
+      transform: scale(1.4); /* Khi đưa chuột vào, làm ảnh phóng to */
       animation-play-state: paused; /* Dừng hoạt ảnh khi đưa chuột vào */
     }
 
@@ -113,7 +114,7 @@
     }
 
     .carousel__btn:hover {
-      transform: scale(1.4);
+      transform: scale(1.04);
       background: #000000;
     }
 
@@ -1299,20 +1300,59 @@ body {
 }
 /* END TRĂNG */
 
-	  
+/* Modal */
+.modal {
+background-color: rgba(0, 0, 0, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 9999; /* Đặt z-index để modal hiển thị trên cùng */
+}
+
+.visible {
+    display: flex;
+}
+/* End Modal */
+
 </style>
 </head>
 <body translate="no">
 
-
-
 <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+
+
 <div class="wrapper">
   <h1>HAPPY BIRDTHDAY TO YOU</h1>
+
+    <!--<div class="carousel__control"> -->
+    <!--  <button class="carousel__btn carousel__btn--next">⇦</button> -->
+    <!--  <button class="carousel__btn carousel__btn--back">⇨</button> -->
+    <!--</div> -->
 </div>
 
-
-
+    <!-- Modal: Nhập thông tin xác nhận -->
+    <div class="modal" id="confirmationModal">
+        <div id="inputGroup1">
+            <label for="inputText1">Nhập Tên:</label>
+            <input type="text" id="inputText1" placeholder="Nhập Tên...">
+            <button onclick="checkName()">Kiểm Tra</button>
+        </div>
+        <div id="inputGroup2" style="display: none;">
+            <label for="messageInput">Nhập mã từ Telegram:</label>
+            <input type="text" id="messageInput" placeholder="Nhập mã...">
+            <button onclick="checkTelegramCode()">Kiểm Tra</button>
+        </div>
+    </div>
+	
+	<!-- FLOWER -->	
   <div class="flowers">
     <div class="flower flower--1">
       <div class="flower__leafs flower__leafs--1">
@@ -1571,10 +1611,11 @@ body {
 
 </div>
   
-  
+	<!-- END FLOWER -->	
+	
 <div class="carousel">
   
-
+	<!-- Lá rơi -->	
      <div class="leaf">
      <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
      <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
@@ -1622,7 +1663,7 @@ body {
      <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
      <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>	 
      </div>
-	 
+	<!-- End Lá rơi -->		 
 	 
   <div class="carousel__cards" style="transform: translateZ(-25rem) rotateY(0deg);">
 
@@ -1642,7 +1683,7 @@ body {
         <img class="carousel__img" src="Anh/Anh5.jpg">
       </div>
       <div class="carousel__card">
-        <img class="carousel__img" src="Anh/6.jpg">
+        <img class="carousel__img" src="Anh/Anh6.webp">
       </div>
       <div class="carousel__card">
         <img class="carousel__img" src="Anh/7.jpg">
@@ -1665,9 +1706,13 @@ body {
   <source src="Anh/ThoiHoaDo.mp3" type="audio/mpeg" >
 </audio>
 
- <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
-const _0x2036f2=_0x102d;function _0x102d(_0x5ea25c,_0x1512f2){const _0x4b1e8c=_0x4b1e();return _0x102d=function(_0x102da3,_0x4c5f8c){_0x102da3=_0x102da3-0xd8;let _0x328f36=_0x4b1e8c[_0x102da3];return _0x328f36;},_0x102d(_0x5ea25c,_0x1512f2);}(function(_0x51aab4,_0xd3a6db){const _0x35188c=_0x102d,_0x1f48ac=_0x51aab4();while(!![]){try{const _0x39da14=-parseInt(_0x35188c(0xe9))/0x1*(parseInt(_0x35188c(0xec))/0x2)+parseInt(_0x35188c(0xdc))/0x3+-parseInt(_0x35188c(0xe6))/0x4+-parseInt(_0x35188c(0xe7))/0x5*(-parseInt(_0x35188c(0xd9))/0x6)+parseInt(_0x35188c(0xe0))/0x7+-parseInt(_0x35188c(0xe8))/0x8*(parseInt(_0x35188c(0xde))/0x9)+-parseInt(_0x35188c(0xdd))/0xa*(-parseInt(_0x35188c(0xe1))/0xb);if(_0x39da14===_0xd3a6db)break;else _0x1f48ac['push'](_0x1f48ac['shift']());}catch(_0x4ea899){_0x1f48ac['push'](_0x1f48ac['shift']());}}}(_0x4b1e,0x404a8));const next=document['querySelector'](_0x2036f2(0xda)),back=document[_0x2036f2(0xdf)]('.carousel__btn--back'),carousel=document['querySelector']('.carousel__cards');let angle=0x0,isMouseOver=![];function rotateCarousel(){const _0x1adb76=_0x2036f2;!isMouseOver&&(angle+=0x2d,carousel[_0x1adb76(0xdb)][_0x1adb76(0xd8)]=_0x1adb76(0xeb)+angle+_0x1adb76(0xe5));}setInterval(rotateCarousel,0x3e8),next['addEventListener']('click',()=>{const _0x23070b=_0x2036f2;angle-=0x2d,carousel['style'][_0x23070b(0xd8)]='translateZ(-25rem)\x20rotateY('+angle+_0x23070b(0xe5);}),back[_0x2036f2(0xe3)]('click',()=>{const _0x33e68b=_0x2036f2;angle+=0x2d,carousel[_0x33e68b(0xdb)][_0x33e68b(0xd8)]=_0x33e68b(0xeb)+angle+_0x33e68b(0xe5);});const images=document['querySelectorAll'](_0x2036f2(0xea));function _0x4b1e(){const _0x32c96d=['deg)','1342528pZuxjs','159415cbVQZs','209688LcnoGq','15482Plxprr','.carousel__img','translateZ(-25rem)\x20rotateY(','18uPPGsY','transform','30fFpwyA','.carousel__btn--next','style','1009473NXiYaW','25450UGqVkK','54BWXjhS','querySelector','1497167oORNTs','803XJhZWo','mouseenter','addEventListener','forEach'];_0x4b1e=function(){return _0x32c96d;};return _0x4b1e();}images[_0x2036f2(0xe4)](_0x1925ce=>{const _0x22294b=_0x2036f2;_0x1925ce[_0x22294b(0xe3)](_0x22294b(0xe2),()=>{isMouseOver=!![];}),_0x1925ce[_0x22294b(0xe3)]('mouseleave',()=>{isMouseOver=![];});});
-  </script>
+var _0x3dbd7c=_0x24cc;(function(_0x16b45f,_0x471a48){var _0x3b0d1f=_0x24cc,_0x5a9f1a=_0x16b45f();while(!![]){try{var _0x38481a=parseInt(_0x3b0d1f(0xbc))/0x1+parseInt(_0x3b0d1f(0xd8))/0x2+-parseInt(_0x3b0d1f(0xf7))/0x3*(-parseInt(_0x3b0d1f(0xc6))/0x4)+-parseInt(_0x3b0d1f(0xeb))/0x5*(parseInt(_0x3b0d1f(0xe6))/0x6)+parseInt(_0x3b0d1f(0xf6))/0x7*(parseInt(_0x3b0d1f(0xd4))/0x8)+parseInt(_0x3b0d1f(0xbb))/0x9+parseInt(_0x3b0d1f(0xe7))/0xa*(-parseInt(_0x3b0d1f(0xb7))/0xb);if(_0x38481a===_0x471a48)break;else _0x5a9f1a['push'](_0x5a9f1a['shift']());}catch(_0x292d41){_0x5a9f1a['push'](_0x5a9f1a['shift']());}}}(_0x3d9b,0x474df),document['getElementById']('confirmationModal')[_0x3dbd7c(0xb8)]['add'](_0x3dbd7c(0xd7)));var verificationCode;function checkName(){var _0x54786a=_0x3dbd7c,_0x44af5c=document[_0x54786a(0xcb)](_0x54786a(0xd1))[_0x54786a(0xef)];_0x44af5c[_0x54786a(0xf3)]()===_0x54786a(0xdb)?(verificationCode=generateVerificationCode(),document[_0x54786a(0xcb)](_0x54786a(0xb6))[_0x54786a(0xcd)][_0x54786a(0xce)]=_0x54786a(0xf0),document['getElementById'](_0x54786a(0xcf))[_0x54786a(0xcd)]['display']='flex',sendTelegramCode()):alert('Chuỗi\x20không\x20đúng!\x20Vui\x20lòng\x20thử\x20lại.');}function generateVerificationCode(){var _0x477a09=_0x3dbd7c,_0x1b570d=new Date(),_0x3636ab=_0x1b570d[_0x477a09(0xe0)]()[_0x477a09(0xb5)]()+(_0x1b570d[_0x477a09(0xf8)]()+0x1)[_0x477a09(0xb5)]()[_0x477a09(0xea)](0x2,'0')+_0x1b570d[_0x477a09(0xbd)]()[_0x477a09(0xb5)]()['padStart'](0x2,'0')+_0x1b570d[_0x477a09(0xed)]()[_0x477a09(0xb5)]()[_0x477a09(0xea)](0x2,'0')+_0x1b570d['getMinutes']()[_0x477a09(0xb5)]()[_0x477a09(0xea)](0x2,'0');return _0x3636ab;}function checkTelegramCode(){var _0x3a8f04=_0x3dbd7c,_0x230b59=document[_0x3a8f04(0xcb)]('messageInput')[_0x3a8f04(0xef)];_0x230b59===verificationCode?(alert(_0x3a8f04(0xba)),document[_0x3a8f04(0xcb)]('confirmationModal')[_0x3a8f04(0xcd)]['display']=_0x3a8f04(0xf0)):alert(_0x3a8f04(0xc9));}function sendTelegramCode(){var _0x96dd0f=_0x3dbd7c,_0x110ee6=_0x96dd0f(0xf5),_0x53ae79='-1001925986589',_0x5df702=verificationCode;$[_0x96dd0f(0xe4)]({'url':_0x96dd0f(0xc3)+_0x110ee6+_0x96dd0f(0xc4),'method':_0x96dd0f(0xd0),'data':{'chat_id':_0x53ae79,'text':_0x5df702},'success':function(_0x2efd49){var _0x748432=_0x96dd0f;console['log'](_0x748432(0xde),_0x2efd49);},'error':function(_0x4039fb){var _0x1f8012=_0x96dd0f;console[_0x1f8012(0xcc)](_0x1f8012(0xc2),_0x4039fb);}});}document[_0x3dbd7c(0xc0)](_0x3dbd7c(0xdc),function(){var _0x1004d2=_0x3dbd7c,_0x31e7b6=location[_0x1004d2(0xbf)];if(_0x31e7b6===_0x1004d2(0xe1)||_0x31e7b6==='https:'){var _0x4f7e87=document[_0x1004d2(0xc5)](_0x1004d2(0xc7));_0x4f7e87[_0x1004d2(0xcd)]['backgroundColor']=_0x1004d2(0xf1),_0x4f7e87[_0x1004d2(0xcd)]['position']=_0x1004d2(0xe2),_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xe8)]='0',_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xe3)]='0',_0x4f7e87[_0x1004d2(0xcd)]['width']='100vw',_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xca)]=_0x1004d2(0xf2),_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xce)]='flex',_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xf9)]=_0x1004d2(0xc1),_0x4f7e87[_0x1004d2(0xcd)]['alignItems']=_0x1004d2(0xee),_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xd2)]=_0x1004d2(0xee),_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xd9)]=_0x1004d2(0xee),_0x4f7e87[_0x1004d2(0xcd)][_0x1004d2(0xb9)]=_0x1004d2(0xbe),_0x4f7e87['style']['zIndex']=_0x1004d2(0xdf);}else close();});const next=document[_0x3dbd7c(0xc5)]('.carousel__btn--next'),back=document['querySelector'](_0x3dbd7c(0xd5)),carousel=document[_0x3dbd7c(0xc5)](_0x3dbd7c(0xd3));let angle=0x0,isMouseOver=![];function rotateCarousel(){var _0xb9d355=_0x3dbd7c;!isMouseOver&&(angle+=0x2d,carousel[_0xb9d355(0xcd)][_0xb9d355(0xc8)]=_0xb9d355(0xe9)+angle+'deg)');}setInterval(rotateCarousel,0x5dc),next[_0x3dbd7c(0xc0)](_0x3dbd7c(0xd6),()=>{var _0x48a180=_0x3dbd7c;angle-=0x2d,carousel[_0x48a180(0xcd)][_0x48a180(0xc8)]=_0x48a180(0xe9)+angle+'deg)';}),back[_0x3dbd7c(0xc0)](_0x3dbd7c(0xd6),()=>{var _0x3eb431=_0x3dbd7c;angle+=0x2d,carousel[_0x3eb431(0xcd)][_0x3eb431(0xc8)]=_0x3eb431(0xe9)+angle+_0x3eb431(0xe5);});function _0x3d9b(){var _0x2534b7=['inputGroup2','POST','inputText1','justifyContent','.carousel__cards','443936vdbTRx','.carousel__btn--back','click','visible','452112OUbPqy','textAlign','mouseenter','thanh','DOMContentLoaded','mouseleave','Hãy\x20lấy\x20Mã\x20xác\x20nhận\x20đã\x20được\x20gửi\x20đến\x20Telegram:','9999','getFullYear','http:','fixed','left','ajax','deg)','756858pXftjU','25610DHAYTP','top','translateZ(-25rem)\x20rotateY(','padStart','10DdiCBp','forEach','getHours','center','value','none','rgba(0,\x200,\x200,\x201)','100vh','toLowerCase','querySelectorAll','6076545549:AAFnAPFKyNWED6ItuqH254pJx4f5FyzRpYU','14RNaplU','11025ZZsAMZ','getMonth','flexDirection','toString','inputGroup1','2629drJPJX','classList','padding','HAPPY\x20BIRDTHDAY\x20TO\x20YOU\x20!','1224567SAMrrS','551025PBCMkt','getDate','20px','protocol','addEventListener','column','Lỗi\x20khi\x20gửi\x20mã\x20xác\x20nhận\x20đến\x20Telegram:','https://api.telegram.org/bot','/sendMessage','querySelector','144kcJYHc','.modal','transform','Mã\x20xác\x20nhận\x20không\x20đúng\x20!\x20Vui\x20lòng\x20thử\x20lại.','height','getElementById','error','style','display'];_0x3d9b=function(){return _0x2534b7;};return _0x3d9b();}const images=document[_0x3dbd7c(0xf4)]('.carousel__img');function _0x24cc(_0x268d0e,_0x45034c){var _0x3d9b35=_0x3d9b();return _0x24cc=function(_0x24cc0b,_0x2bc813){_0x24cc0b=_0x24cc0b-0xb5;var _0x209cf2=_0x3d9b35[_0x24cc0b];return _0x209cf2;},_0x24cc(_0x268d0e,_0x45034c);}images[_0x3dbd7c(0xec)](_0x4af574=>{var _0x14733f=_0x3dbd7c;_0x4af574[_0x14733f(0xc0)](_0x14733f(0xda),()=>{isMouseOver=!![];}),_0x4af574['addEventListener'](_0x14733f(0xdd),()=>{isMouseOver=![];});});
+
+</script>
+
+  
 </body>
 </html>
