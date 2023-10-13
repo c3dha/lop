@@ -16,10 +16,33 @@
 
   <link rel="stylesheet" media="screen" href="Phao_Hoa_Dep_OK/fullpage-7d0085e88e3f06095d712efc55f79fc6aedaeed08967649de30.css">
 
+
+  <style>
+    html { font-size: 15px; }
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body { height:100%; display: flex; flex-direction: column; }
+    .referer-warning {
+      background: black;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      padding: 0.75em;
+      color: white;
+      text-align: center;
+      font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, system-ui, Sans-Serif;
+      line-height: 1.2;
+      font-size: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .referer-warning span { font-family: initial; }
+    .referer-warning h1 { font-size: 1.2rem; margin: 0; }
+    .referer-warning a { color: #56bcf9; }
+  </style>
 </head>
 
 <body class="">
+  
 
+  <div id="result-iframe-wrap" role="main">
 <iframe id="result" srcdoc="<!DOCTYPE html<iframe>
 
 
@@ -403,51 +426,20 @@ body {
   -webkit-transition-duration: 0.4s;
           transition-duration: 0.4s;
 }
-
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
-}
-.center h1{
-  color: rgba(255,0,0,0.1);
-  font-size:30px;
-  text-transform: uppercase;
-  font-weight: 1000;
-  background-size: cover;
-  background-image: url(Phao_Hoa_Dep_OK/Hoa.jpeg);
-  -webkit-background-clip: text;
-  animation: background-text-animation 10s linear infinite;
-}
-@keyframes background-text-animation {
-  0%{
-    background-position: left 0px top 20%;
-  }
-  50%{
-    background-position: left 1500px top 20%;
-  }
-  100%{
-    background-position: left 0px top 20%;
-  }
-}
-
-    h1:hover {
-      color: rgba(255, 0, 0, 0.5);
-    }
 </style>
 
-<script>  window.console = window.console || function(t) {};</script>
+  <script>
+  window.console = window.console || function(t) {};
+</script>
 
+  
+  
 </head>
 
 <body>
 <!-- partial:index.partial.html -->
 <!-- SVG Spritesheet -->
-<div id='openPage' onclick='openPage()' class='center'><h1>TO YOU</h1></div>
 <div style=&quot;height: 0; width: 0; position: absolute; visibility: hidden;&quot;>
-
 	<svg xmlns=&quot;http://www.w3.org/2000/svg&quot;>
 		<symbol id=&quot;icon-play&quot; viewBox=&quot;0 0 24 24&quot;>
 			<path d=&quot;M8 5v14l11-7z&quot;/>
@@ -471,11 +463,8 @@ body {
 </div>
 
 <!-- App -->
-
-
 <div class=&quot;container&quot;>
-
-	<div class=&quot;loading-init&quot;>	
+	<div class=&quot;loading-init&quot;>
 		<div class=&quot;loading-init__header&quot;>Loading</div>
 		<div class=&quot;loading-init__status&quot;>Assembling Shells</div>
 	</div>
@@ -495,7 +484,6 @@ body {
 				<svg fill=&quot;white&quot; width=&quot;24&quot; height=&quot;24&quot;><use href=&quot;#icon-settings&quot; xlink:href=&quot;#icon-settings&quot;></use></svg>
 			</div>
 		</div>
-
 		<div class=&quot;menu hide&quot;>
 			<div class=&quot;menu__inner-wrap&quot;>
 				<div class=&quot;btn btn--bright close-menu-btn&quot;>
@@ -566,23 +554,13 @@ body {
 
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
-<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script><script  
-
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script><script  src=&quot;./script.js&quot;></script>
 
 </body>
 </html>
-
-  <script>
-
-  </script> 
-
-<script>
-//https://alvarotrigo.com/blog/best-css-button-hover-effects/
-//https://codepen.io/alvarotrigo/pen/PojemoK
-//https://codepen.io/alvarotrigo/pen/poOOZYZ
-//https://www.pexels.com/vi-vn/tim-kiem/h%C3%ACnh%20n%E1%BB%81n%20full%20hd/
+  
+      <script id=&quot;rendered-js&quot; >
 'use strict';
-
 console.clear();
 
 // This is a prime example of what starts out as a simple project
@@ -591,7 +569,7 @@ console.clear();
 
 const IS_MOBILE = window.innerWidth <= 640;
 const IS_DESKTOP = window.innerWidth > 800;
-const IS_HEADER = IS_DESKTOP && window.innerHeight < 300;
+const IS_HEADER = IS_DESKTOP &amp;&amp; window.innerHeight < 300;
 // Detect high end devices. This will be a moving target.
 const IS_HIGH_END_DEVICE = (() => {
   const hwConcurrency = navigator.hardwareConcurrency;
@@ -700,7 +678,7 @@ const store = {
   state: {
     // will be unpaused in init()
     paused: true,
-    soundEnabled: true,
+    soundEnabled: false,
     menuOpen: false,
     openHelpTopic: null,
     fullscreen: isFullscreen(),
@@ -769,7 +747,7 @@ const store = {
         // Attempt to parse data, ignoring if there is an error.
         try {
           const sizeRaw = localStorage.getItem('configSize');
-          size = typeof sizeRaw === 'string' && JSON.parse(sizeRaw);
+          size = typeof sizeRaw === 'string' &amp;&amp; JSON.parse(sizeRaw);
         }
         catch (e) {
           console.log('Recovered from error parsing saved config:');
@@ -778,7 +756,7 @@ const store = {
         }
         // Only restore validated values
         const sizeInt = parseInt(size, 10);
-        if (sizeInt >= 0 && sizeInt <= 4) {
+        if (sizeInt >= 0 &amp;&amp; sizeInt <= 4) {
           this.state.config.size = String(sizeInt);
         }
       }
@@ -845,7 +823,7 @@ function updateConfig(nextConfig) {
   configDidUpdate();
 }
 
-// Map config to various properties & apply side effects
+// Map config to various properties &amp; apply side effects
 function configDidUpdate() {
   const config = store.state.config;
 
@@ -864,11 +842,11 @@ function configDidUpdate() {
 // Selectors
 // -----------
 
-const isRunning = (state = store.state) => !state.paused && !state.menuOpen;
+const isRunning = (state = store.state) => !state.paused &amp;&amp; !state.menuOpen;
 // Whether user has enabled sound.
 const soundEnabledSelector = (state = store.state) => state.soundEnabled;
 // Whether any sounds are allowed, taking into account multiple factors.
-const canPlaySoundSelector = (state = store.state) => isRunning(state) && soundEnabledSelector(state);
+const canPlaySoundSelector = (state = store.state) => isRunning(state) &amp;&amp; soundEnabledSelector(state);
 // Convert quality to number.
 const qualitySelector = () => +store.state.config.quality;
 const shellNameSelector = () => store.state.config.shell;
@@ -1118,13 +1096,13 @@ function randomColorSimple() {
 // Get a random color, with some customization options available.
 let lastColor;
 function randomColor(options) {
-  const notSame = options && options.notSame;
-  const notColor = options && options.notColor;
-  const limitWhite = options && options.limitWhite;
+  const notSame = options &amp;&amp; options.notSame;
+  const notColor = options &amp;&amp; options.notColor;
+  const limitWhite = options &amp;&amp; options.limitWhite;
   let color = randomColorSimple();
 
   // limit the amount of white chosen randomly
-  if (limitWhite && color === COLOR.White && Math.random() < 0.6) {
+  if (limitWhite &amp;&amp; color === COLOR.White &amp;&amp; Math.random() < 0.6) {
     color = randomColorSimple();
   }
 
@@ -1158,10 +1136,10 @@ const crysanthemumShell = (size = 1) => {
   const glitter = Math.random() < 0.25;
   const singleColor = Math.random() < 0.72;
   const color = singleColor ? randomColor({ limitWhite: true }) : [randomColor(), randomColor({ notSame: true })];
-  const pistil = singleColor && Math.random() < 0.42;
-  const pistilColor = pistil && makePistilColor(color);
-  const secondColor = singleColor && (Math.random() < 0.2 || color === COLOR.White) ? pistilColor || randomColor({ notColor: color, limitWhite: true }) : null;
-  const streamers = !pistil && color !== COLOR.White && Math.random() < 0.42;
+  const pistil = singleColor &amp;&amp; Math.random() < 0.42;
+  const pistilColor = pistil &amp;&amp; makePistilColor(color);
+  const secondColor = singleColor &amp;&amp; (Math.random() < 0.2 || color === COLOR.White) ? pistilColor || randomColor({ notColor: color, limitWhite: true }) : null;
+  const streamers = !pistil &amp;&amp; color !== COLOR.White &amp;&amp; Math.random() < 0.42;
   let starDensity = glitter ? 1.1 : 1.25;
   if (isLowQuality) starDensity *= 0.8;
   if (isHighQuality) starDensity = 1.2;
@@ -1191,7 +1169,7 @@ const ghostShell = (size = 1) => {
   // Always use streamers, and sometimes a pistil
   shell.streamers = true;
   const pistil = Math.random() < 0.42;
-  const pistilColor = pistil && makePistilColor(ghostColor);
+  const pistilColor = pistil &amp;&amp; makePistilColor(ghostColor);
   // Ghost effect - transition from invisible to chosen color
   shell.color = INVISIBLE;
   shell.secondColor = ghostColor;
@@ -1383,30 +1361,16 @@ const shellTypes = {
 
 const shellNames = Object.keys(shellTypes);
 
-//--- MỞ TRANG MỚI ----
-const buttonElement = document.getElementById('openPage'); // Thay thế 'myButton' bằng ID của phần tử bạn muốn kích hoạt hàm này khi click.
-buttonElement.addEventListener('click', openPage);
-
-function openPage(event) {
-  event.preventDefault(); // Đảm bảo rằng sự kiện không bị chặn.
-  //alert('OK');
-  window.location.href = 'https://thanhnice.github.io/forever'; // Thay thế URL bằng URL của trang bạn muốn chuyển hướng đến
-} 
-//--- END MỞ TRANG MỚI ----
-
 function init() {
   // Remove loading state
   document.querySelector('.loading-init').remove();
   appNodes.stageContainer.classList.remove('remove');
-  // Bật âm thanh
-  toggleSound(true);
+
   // Populate dropdowns
   function setOptionsForSelect(node, options) {
     node.innerHTML = options.reduce((acc, opt) => acc += `<option value=&quot;${opt.value}&quot;>${opt.label}</option>`, '');
   }
 
- 
-  
   // shell type
   let options = '';
   shellNames.forEach(opt => options += `<option value=&quot;${opt}&quot;>${opt}</option>`);
@@ -1694,7 +1658,7 @@ function startSequence() {
 
   const rand = Math.random();
 
-  if (rand < 0.08 && Date.now() - seqSmallBarrage.lastCalled > seqSmallBarrage.cooldown) {
+  if (rand < 0.08 &amp;&amp; Date.now() - seqSmallBarrage.lastCalled > seqSmallBarrage.cooldown) {
     return seqSmallBarrage();
   }
 
@@ -1702,7 +1666,7 @@ function startSequence() {
     return seqPyramid();
   }
 
-  if (rand < 0.6 && !IS_HEADER) {
+  if (rand < 0.6 &amp;&amp; !IS_HEADER) {
     return seqRandomShell();
   } else
   if (rand < 0.8) {
@@ -1726,7 +1690,7 @@ function handlePointerStart(event) {
       togglePause();
       return;
     }
-    if (event.x > mainStage.width / 2 - btnSize / 2 && event.x < mainStage.width / 2 + btnSize / 2) {
+    if (event.x > mainStage.width / 2 - btnSize / 2 &amp;&amp; event.x < mainStage.width / 2 + btnSize / 2) {
       toggleSound();
       return;
     }
@@ -1917,7 +1881,7 @@ function update(frameTime, lag) {
 
         // Handle star transitions
         if (star.life < star.transitionTime) {
-          if (star.secondColor && !star.colorChanged) {
+          if (star.secondColor &amp;&amp; !star.colorChanged) {
             star.colorChanged = true;
             star.color = star.secondColor;
             stars.splice(i, 1);
@@ -2293,7 +2257,7 @@ class Shell {
     const comet = this.comet = Star.add(
     launchX,
     launchY,
-    typeof this.color === 'string' && this.color !== 'random' ? this.color : COLOR.White,
+    typeof this.color === 'string' &amp;&amp; this.color !== 'random' ? this.color : COLOR.White,
     Math.PI,
     launchVelocity * (this.horsetail ? 1.2 : 1),
     // Hang time is derived linearly from Vi; exact number came from testing
@@ -2319,7 +2283,7 @@ class Shell {
 
     // Randomly make comet &quot;burn out&quot; a bit early.
     // This is disabled for horsetail shells, due to their very short airtime.
-    if (Math.random() > 0.4 && !this.horsetail) {
+    if (Math.random() > 0.4 &amp;&amp; !this.horsetail) {
       comet.secondColor = INVISIBLE;
       comet.transitionTime = Math.pow(Math.random(), 1.5) * 700 + 500;
     }
@@ -2411,8 +2375,8 @@ class Shell {
       speedMult * speed,
       // add minor variation to star life
       this.starLife + Math.random() * this.starLife * this.starLifeVariation,
-      this.horsetail ? this.comet && this.comet.speedX : 0,
-      this.horsetail ? this.comet && this.comet.speedY : -standardInitialSpeed);
+      this.horsetail ? this.comet &amp;&amp; this.comet.speedX : 0,
+      this.horsetail ? this.comet &amp;&amp; this.comet.speedY : -standardInitialSpeed);
 
 
       if (this.secondColor) {
@@ -2644,7 +2608,7 @@ const Star = {
   // Public method for cleaning up and returning an instance back to the pool.
   returnInstance(instance) {
     // Call onDeath handler if available (and pass it current star instance)
-    instance.onDeath && instance.onDeath(instance);
+    instance.onDeath &amp;&amp; instance.onDeath(instance);
     // Clean up
     instance.onDeath = null;
     instance.secondColor = null;
@@ -2744,7 +2708,7 @@ const soundManager = {
     const allFilePromises = [];
 
     function checkStatus(response) {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.status >= 200 &amp;&amp; response.status < 300) {
         return response;
       }
       const customError = new Error(response.statusText);
@@ -2891,30 +2855,15 @@ if (IS_HEADER) {
   }, 0);
 }
 
-
     </script>
 
+  
+</body>
+
+
 " sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" allow="camera; display-capture; geolocation; microphone; web-share" allowtransparency="true" allowpaymentrequest="true" allowfullscreen="true" class="result-iframe">
-</iframe>
-
-  <script>
-document.getElementById("openPage").onclick = function(){openPage()};
-
-
-
-Login = function() {      
-    var khánh;
-    khánh1 = '' + (location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''));
-	khánh2 = ".html"
-
-	khánh = khánh1 + "/dangnhap" + khánh2;
-    //options = 'toolbar=no,menubar=no,location=no,directories=no,status=yes,resizable=1,width=800,height=auto';
-    //window.open(url,'sharer',options);
-	window.open(khánh,target="_blank");
-//alert(khánh);
-}	
-	
- </script>
+      </iframe>
+  </div>
 
 </body>
 </html>
