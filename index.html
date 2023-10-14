@@ -1,69 +1,142 @@
-<!DOCTYPE html>
-<!--[if lte IE 9]>
-<html lang="en" class="oldie">
-<![endif]-->
-<!--[if gt IE 9]><!-->
-<html lang="en" class="pc firefox118 js js"><!--<![endif]--><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="csrf-param" content="authenticity_token">
-<meta name="csrf-token" content="G7JR+8v3uCsuIk8LAnMROSVyPWFogIRDyGqAf+UFWUul1PtDo3ZsbCu5VxIHnbI7bxQRUeErj9Q810QUgBnreg==">
+<html lang="en">
 
-<title>CodePen - Firework Show</title>
-<link rel="stylesheet" media="screen" href="CodePen%20-%20Firework%20Show_files/fullpage-7d0085e88e3f06095d712efc55f79fc6aedaeed08967649de30.css">
-<link rel="stylesheet" media="all" href="CodePen%20-%20Firework%20Show_files/global-3338ac719ea4941f0d977238f9c13d5660c81d09e15411f488e0d.css">
-<link rel="stylesheet" media="screen" href="CodePen%20-%20Firework%20Show_files/everypage-a3b74ee4.css">
-<link rel="stylesheet" media="all" href="CodePen%20-%20Firework%20Show_files/page-d67d8b402666f577e2b63a27d75bd7d44e24919cdaa0c0ef850e750.css">
-<link rel="stylesheet" media="all" href="CodePen%20-%20Firework%20Show_files/editor-fd58a62284b4f2d06087cac60636548a57fa7b6005bfdce9432d3.css">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@CodePen">
-<meta name="twitter:title" content="Firework Show">
-<meta name="twitter:description" content="...">
-<meta name="twitter:image" content="https://shots.codepen.io/username/pen/jOrBaGR-800.jpg?version=1603715496">
-<meta property="og:image" content="https://shots.codepen.io/username/pen/jOrBaGR-800.jpg?version=1603715496" itemprop="thumbnailUrl">
-<meta property="og:title" content="Firework Show">
-<meta property="og:url" content="https://codepen.io/saynachhava/details/jOrBaGR">
-<meta property="og:site_name" content="CodePen">
-<meta property="og:description" content="...">
-<link rel="alternate" type="application/json+oembed" href="https://codepen.io/api/oembed?url=https%3A%2F%2Fcodepen.io%2Fsaynachhava%2Fpen%2FjOrBaGR&amp;format=json" title="Firework Show">
-<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
-<meta name="apple-mobile-web-app-title" content="CodePen">
-<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
-<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
-<style id="_goober"> @keyframes go2264125279{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go3020080000{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}@keyframes go463499852{from{transform:scale(0) rotate(90deg);opacity:0;}to{transform:scale(1) rotate(90deg);opacity:1;}}@keyframes go1268368563{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}@keyframes go1310225428{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go651618207{0%{height:0;width:0;opacity:0;}40%{height:0;width:6px;opacity:1;}100%{opacity:1;height:10px;}}@keyframes go901347462{from{transform:scale(0.6);opacity:0.4;}to{transform:scale(1);opacity:1;}}.go4109123758{z-index:9999;}.go4109123758 > *{pointer-events:auto;}</style><script src="CodePen%20-%20Firework%20Show_files/CWYDP2QE.json"></script></head>
-<body class="fullpage logged-out">
-<header id="main-header" class="main-header"></header>
-<div class="oldie-header">
-<a href="https://codepen.io/saynachhava/pen/jOrBaGR?anon=true&amp;view=pen">Edit Pen</a>
-</div>
-<div id="result-iframe-wrap" role="main">
-<iframe id="result" src="CodePen%20-%20Firework%20Show_files/jOrBaGR.htm" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" allow="camera; display-capture; geolocation; microphone; web-share" allowtransparency="true" allowpaymentrequest="true" allowfullscreen="true" class="result-iframe" loading="lazy"></iframe>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <title>Firework Show :: Sayn Achhava</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="style.css">
 
-<textarea id="init-data" style="display:none">{"__browser":{"country":"VN","device":"unknown_device","mobile":false,"name":"firefox","platform":"pc","version":"118"},"__constants":{},"__CPDATA":{"domain_iframe":"https://cdpn.io","environment":"production","host":"codepen.io","iframe_allow":"camera;
- display-capture; geolocation; microphone; 
-web-share","iframe_sandbox":"allow-forms allow-modals allow-pointer-lock
- allow-popups allow-same-origin allow-scripts 
-allow-top-navigation-by-user-activation allow-downloads 
-allow-presentation"},"__graphql":{"data":{"data":{"sessionUser":{"id":"VoDkNZ","name":"Captain
- Anonymous","title":"Captain 
-Anonymous","avatar":"https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0","currentContext":{"id":"VoDkNZ","title":"Captain
- Anonymous","name":"Captain 
-Anonymous","avatar":"https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0","username":"anon","__typename":"User"},"currentTeamId":null,"username":"anon","admin":false,"anon":true,"pro":false,"verified":false,"teams":[],"__typename":"User"}}},"url":"https://codepen.io/graphql","api":"cprails"},"__user":{"anon":true,"base_url":"/anon/","cohorts":[],"current_team_hashid":null,"current_team_id":0,"hashid":"VoDkNZ","id":1,"itemType":"user","name":"Captain
- 
-Anonymous","paid":false,"tier":0,"username":"anon","created_at":null,"email_verified":null,"collections_count":0,"collections_private_count":0,"followers_count":0,"followings_count":0,"pens_count":0,"pens_private_count":0,"projects_count":0,"projects_private_count":0},"__firebase":{"config":{"apiKey":"AIzaSyBgLAe7N_MdFpuVofMkcQLGwwhUu5tuxls","authDomain":"codepen-store-production.firebaseapp.com","databaseURL":"https://codepen-store-production.firebaseio.com","disabled":false,"projectId":"codepen-store-production"},"token":"eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImNsYWltcyI6eyJvd25lcklkIjoiVm9Ea05aIiwiYWRtaW4iOmZhbHNlfSwiZXhwIjoxNjk3MjAyNDQ1LCJpYXQiOjE2OTcxOTg4NDUsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInN1YiI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6IlZvRGtOWiJ9.it4laflnaWxNI8Y23IaCHsvGRa5xXrAbkNEh12v94iEIojr7DkFSwEXGgH7MTUkHZwDznQzUOb1foSEFFhq-uFt3OYXCeFq9ilx-8QJxnsMHp3jwfGeL_nAkj0b9HZzk8Jwv3_W-KwwCJpvtp7inSx-W0TwHf2rjTOYV_5T08oU2Ny1hlu_AnVrVKZmsTo2vimyCXUjvcYYrzKd3PGHErNrW2iqL5Zg9ToEaaG3e1Je73sOs1f6SKLPjwjxXq3dIoeTgeE7C2WXSwk_DTRukvcS6es5lZjq9NOCqa305YfqWYN9oYEyIUBQCPmARSNy49SlbuOFDu5-uVQAF0mOJzg"},"__pay_stripe_public_key":"pk_live_2GndomDfiklqpSNQn8FrGuwZSMIMzha7DkLJqlYe7IR0ihKAlKdiHg68JJc5eVPt68rzAjzAAVXcUwjySHRCsgjQQ00gtRBUFNH","__pay_braintree_env":"production","__item":"{\"id\":47850095,\"hashid\":\"jOrBaGR\",\"itemType\":\"pen\",\"user_id\":1936006,\"slug_hash\":\"jOrBaGR\",\"private\":false,\"slug_hash_private\":\"e92b8b5668ef56f2adf7268cdf98cd90\"}","__profiled":{"base_url":"/saynachhava","hashid":"EjLzOz","id":1936006,"name":"Sahil
- Achhava","type":"user","username":"saynachhava"},"__pageType":"full"}</textarea>
-<div id="popup-overlay" class="overlay popup-overlay"></div>
-<div id="modal-overlay" class="overlay modal-overlay"></div>
-<script src="CodePen%20-%20Firework%20Show_files/everypage-b1fe1ca71dab80c49b8e5ebed21506a80cb6fe64ecaa8c6ddda.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/vendor-670f7075429957946240.chunk.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/1-041ea96a0d82a923e64f.chunk.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/referrer-tracking-7476e476d32003d93e40.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/vendor-670f7075429957946240.chunk.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/1-041ea96a0d82a923e64f.chunk.js"></script>
-<script src="CodePen%20-%20Firework%20Show_files/everypage-38bc30c8bbdbc980526d.js"></script><div id="react-messages"><div style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div></div><div></div>
-<script src="CodePen%20-%20Firework%20Show_files/full_page_renderer-74c0df88dc71f0228dc09f732aac0a6e7dd92c69e8.js"></script>
+</head>
 
+<body>
+    <h2>Happy New Year</h2>
+    <h1>2021</h1>
+    <!-- partial:index.partial.html -->
+    <!-- SVG Spritesheet -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;">
+        <svg xmlns="http://www.w3.org/2000/svg">
+		<symbol id="icon-play" viewBox="0 0 24 24">
+			<path d="M8 5v14l11-7z"/>
+		</symbol>
+		<symbol id="icon-pause" viewBox="0 0 24 24">
+			<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		</symbol>
+		<symbol id="icon-close" viewBox="0 0 24 24">
+			<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+		</symbol>
+		<symbol id="icon-settings" viewBox="0 0 24 24">
+			<path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+		</symbol>
+		<symbol id="icon-sound-on" viewBox="0 0 24 24">
+			<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+		</symbol>
+		<symbol id="icon-sound-off" viewBox="0 0 24 24">
+			<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+		</symbol>
+	</svg>
+    </div>
 
-</body></html>
+    <!-- App -->
+    <div class="container">
+        <div class="loading-init">
+            <div class="loading-init__header">Loading</div>
+            <div class="loading-init__status">Assembling Shells</div>
+        </div>
+        <div class="stage-container remove">
+            <div class="canvas-container">
+                <canvas id="trails-canvas"></canvas>
+                <canvas id="main-canvas"></canvas>
+            </div>
+            <div class="controls">
+                <div class="btn pause-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-pause" xlink:href="#icon-pause"></use></svg>
+                </div>
+                <div class="btn sound-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-sound-off" xlink:href="#icon-sound-off"></use></svg>
+                </div>
+                <div class="btn settings-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-settings" xlink:href="#icon-settings"></use></svg>
+                </div>
+            </div>
+            <div class="menu hide">
+                <div class="menu__inner-wrap">
+                    <div class="btn btn--bright close-menu-btn">
+                        <svg fill="white" width="24" height="24"><use href="#icon-close" xlink:href="#icon-close"></use></svg>
+                    </div>
+                    <div class="menu__header">Settings</div>
+                    <div class="menu__subheader">For more info, click any label.</div>
+                    <form>
+                        <div class="form-option form-option--select">
+                            <label class="shell-type-label">Shell Type</label>
+                            <select class="shell-type"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="shell-size-label">Shell Size</label>
+                            <select class="shell-size"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="quality-ui-label">Quality</label>
+                            <select class="quality-ui"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="sky-lighting-label">Sky Lighting</label>
+                            <select class="sky-lighting"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="scaleFactor-label">Scale</label>
+                            <select class="scaleFactor"></select>
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="auto-launch-label">Auto Fire</label>
+                            <input class="auto-launch" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--finale-mode">
+                            <label class="finale-mode-label">Finale Mode</label>
+                            <input class="finale-mode" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="hide-controls-label">Hide Controls</label>
+                            <input class="hide-controls" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--fullscreen">
+                            <label class="fullscreen-label">Fullscreen</label>
+                            <input class="fullscreen" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="long-exposure-label">Open Shutter</label>
+                            <input class="long-exposure" type="checkbox" />
+                        </div>
+                    </form>
+                    <div class="credits">
+                        Passionately built Sayn Achhava.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="help-modal">
+            <div class="help-modal__overlay"></div>
+            <div class="help-modal__dialog">
+                <div class="help-modal__header"></div>
+                <div class="help-modal__body"></div>
+                <button type="button" class="help-modal__close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
