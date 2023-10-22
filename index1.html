@@ -1205,47 +1205,398 @@ body::before {
 }
 
 
-/* Modal */
-.modal {
-background-color: rgba(0, 0, 0, 1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    z-index: 9999; /* Đặt z-index để modal hiển thị trên cùng */
-}
-
-.visible {
-    display: flex;
-}
-
-@media screen and (max-width: 768px) {
-    input[type="text"] {
-        width: 80vw; /* Thiết lập chiều rộng là 80% của viewport width */
-    }
-}
-/* End Modal */
 		
 </style>
 
 </head>
 <body>
+    <!-- Modal: Nhập thông tin xác nhận -->
+    <div class="modal" id="confirmationModal">
+        <div id="inputGroup1">
+            <label for="inputText1">Nhập Tên:</label>
+            <input type="text" id="inputText1" style="height:50px; text-align: center; border-radius: 26px 26px 26px 26px; border: 1px solid;" placeholder="Nhập Tên...">
+            <button onclick="checkName()" style="width:100px; height:50px; border-radius: 26px 26px 26px 26px; border: 1px solid;">Kiểm Tra</button>
+        </div>
+        <div id="inputGroup2" style="display: none;">
+            <label for="messageInput">Nhập mã từ Telegram:</label>
+			<input type="text" id="messageInput" style="height:50px; text-align: center; border-radius: 26px; border: 1px solid; margin: 0 auto;" placeholder="Nhập mã...">
+            <button onclick="checkTelegramCode()" style="width:100px; height:50px; border-radius: 26px 26px 26px 26px; border: 1px solid;" >Kiểm Tra</button>
+        </div>
+    </div>
+	<!-- Modal -->
 
-<script language=JavaScript>m='%3Cdiv%20class%3D%22container%22%3E%0A%20%20%20%20%3C%21--%20Modal%3A%20Nh%u1EADp%20th%F4ng%20tin%20x%E1c%20nh%u1EADn%20--%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal%22%20id%3D%22confirmationModal%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22inputGroup1%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clabel%20for%3D%22inputText1%22%3ENh%u1EADp%20T%EAn%3A%3C/label%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cinput%20type%3D%22text%22%20id%3D%22inputText1%22%20style%3D%22height%3A50px%3B%20text-align%3A%20center%3B%20border-radius%3A%2026px%2026px%2026px%2026px%3B%20border%3A%201px%20solid%3B%22%20placeholder%3D%22Nh%u1EADp%20T%EAn...%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20onclick%3D%22checkName%28%29%22%20style%3D%22width%3A100px%3B%20height%3A50px%3B%20border-radius%3A%2026px%2026px%2026px%2026px%3B%20border%3A%201px%20solid%3B%22%3EKi%u1EC3m%20Tra%3C/button%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22inputGroup2%22%20style%3D%22display%3A%20none%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clabel%20for%3D%22messageInput%22%3ENh%u1EADp%20m%E3%20t%u1EEB%20Telegram%3A%3C/label%3E%0A%09%09%09%3Cinput%20type%3D%22text%22%20id%3D%22messageInput%22%20style%3D%22height%3A50px%3B%20text-align%3A%20center%3B%20border-radius%3A%2026px%3B%20border%3A%201px%20solid%3B%20margin%3A%200%20auto%3B%22%20placeholder%3D%22Nh%u1EADp%20m%E3...%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20onclick%3D%22checkTelegramCode%28%29%22%20style%3D%22width%3A100px%3B%20height%3A50px%3B%20border-radius%3A%2026px%2026px%2026px%2026px%3B%20border%3A%201px%20solid%3B%22%20%3EKi%u1EC3m%20Tra%3C/button%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%09%3C%21--%20L%E1%20r%u01A1i%20--%3E%09%0A%20%20%20%20%20%3Cdiv%20class%3D%22leaf%22%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%09%20%0A%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%0A%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf1%22%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%09%20%0A%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%0A%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf2%22%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%20%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20%20src%3D%22http%3A//www.pngmart.com/files/1/Green-Leaves-PNG-File.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%0A%20%20%20%20%20%3Cdiv%3E%3Cimg%20src%3D%22http%3A//www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png%22%20height%3D%2275px%22%20width%3D%2275px%22%3E%3C/img%3E%3C/div%3E%09%20%0A%20%20%20%20%20%3C/div%3E%0A%09%3C%21--%20End%20L%E1%20r%u01A1i%20--%3E%09%09%20%0A%20%20%20%20%3C%21--%20%3Cdiv%20id%3D%22jssor_1%22%20style%3D%22position%3Arelative%3Bmargin%3A0%20auto%3Btop%3A100px%3Bleft%3A0px%3Bwidth%3A980px%3Bheight%3A380px%3Boverflow%3Ahidden%3Bvisibility%3Ahidden%3B%22%3E%20--%3E%0A%09%3Cdiv%20class%3D%22slide%22%20id%3D%22jssor_1%22%20style%3D%22position%3Arelative%3Bmargin%3A0%20auto%3Btop%3A50px%3Bleft%3A0px%3Bwidth%3A900px%3Bheight%3A500px%3Boverflow%3Ahidden%3Bvisibility%3Ahidden%3B%22%3E%0A%09%3C%21--%20Loading%20Screen%20--%3E%0A%0A%09%09%0A%20%20%20%20%20%20%20%20%3Cdiv%20data-u%3D%22slides%22%20style%3D%22cursor%3Adefault%3Bposition%3Arelative%3Btop%3A0px%3Bleft%3A0px%3Bwidth%3A900px%3Bheight%3A500px%3Boverflow%3Ahidden%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/001.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/002.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/003.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/011.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/012.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/013.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/014.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/015.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20data-u%3D%22image%22%20src%3D%22Slider-master_OK/img/016.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C%21--%20Bullet%20Navigator%20--%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20data-u%3D%22navigator%22%20class%3D%22jssorb053%22%20style%3D%22position%3Aabsolute%3Bbottom%3A12px%3Bright%3A12px%3B%22%20data-autocenter%3D%221%22%20data-scale%3D%220.5%22%20data-scale-bottom%3D%220.75%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20data-u%3D%22prototype%22%20class%3D%22i%22%20style%3D%22width%3A16px%3Bheight%3A16px%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csvg%20viewBox%3D%220%200%2016000%2016000%22%20style%3D%22position%3Aabsolute%3Btop%3A0%3Bleft%3A0%3Bwidth%3A100%25%3Bheight%3A100%25%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20class%3D%22b%22%20d%3D%22M11400%2C13800H4600c-1320%2C0-2400-1080-2400-2400V4600c0-1320%2C1080-2400%2C2400-2400h6800%20c1320%2C0%2C2400%2C1080%2C2400%2C2400v6800C13800%2C12720%2C12720%2C13800%2C11400%2C13800z%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C%21--%20Arrow%20Navigator%20--%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20data-u%3D%22arrowleft%22%20class%3D%22jssora093%22%20style%3D%22width%3A50px%3Bheight%3A50px%3Btop%3A0px%3Bleft%3A30px%3B%22%20data-autocenter%3D%222%22%20data-scale%3D%220.75%22%20data-scale-left%3D%220.75%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csvg%20viewBox%3D%220%200%2016000%2016000%22%20style%3D%22position%3Aabsolute%3Btop%3A0%3Bleft%3A0%3Bwidth%3A100%25%3Bheight%3A100%25%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccircle%20class%3D%22c%22%20cx%3D%228000%22%20cy%3D%228000%22%20r%3D%225920%22%3E%3C/circle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolyline%20class%3D%22a%22%20points%3D%227777.8%2C6080%205857.8%2C8000%207777.8%2C9920%20%22%3E%3C/polyline%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cline%20class%3D%22a%22%20x1%3D%2210142.2%22%20y1%3D%228000%22%20x2%3D%225857.8%22%20y2%3D%228000%22%3E%3C/line%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20data-u%3D%22arrowright%22%20class%3D%22jssora093%22%20style%3D%22width%3A50px%3Bheight%3A50px%3Btop%3A0px%3Bright%3A30px%3B%22%20data-autocenter%3D%222%22%20data-scale%3D%220.75%22%20data-scale-right%3D%220.75%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csvg%20viewBox%3D%220%200%2016000%2016000%22%20style%3D%22position%3Aabsolute%3Btop%3A0%3Bleft%3A0%3Bwidth%3A100%25%3Bheight%3A100%25%3B%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccircle%20class%3D%22c%22%20cx%3D%228000%22%20cy%3D%228000%22%20r%3D%225920%22%3E%3C/circle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolyline%20class%3D%22a%22%20points%3D%228222.2%2C6080%2010142.2%2C8000%208222.2%2C9920%20%22%3E%3C/polyline%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cline%20class%3D%22a%22%20x1%3D%225857.8%22%20y1%3D%228000%22%20x2%3D%2210142.2%22%20y2%3D%228000%22%3E%3C/line%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C%21--%20%23endregion%20Jssor%20Slider%20End%20--%3E%0A%09%3C%21--%20FLOWER%20--%3E%09%0A%20%20%3Cdiv%20class%3D%22flowers%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22flower%20flower--1%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leafs%20flower__leafs--1%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__white-circle%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--8%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22flower%20flower--2%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leafs%20flower__leafs--2%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__white-circle%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--8%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22flower%20flower--3%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leafs%20flower__leafs--3%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__leaf%20flower__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__white-circle%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__light%20flower__light--8%22%3E%3C/div%3E%0A%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__line__leaf%20flower__line__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A1.2s%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-long%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-long__top%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-long__bottom%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22growing-grass%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass%20flower__grass--1%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass--top%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass--bottom%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--8%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__overlay%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22growing-grass%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass%20flower__grass--2%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass--top%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass--bottom%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__leaf%20flower__grass__leaf--8%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__grass__overlay%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%0A%09%0A%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A2.8s%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--1%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--2%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--3%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--4%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--5%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--7%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf-wrapper%20flower__g-front__leaf-wrapper--8%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-front__line%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.2s%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--4%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--5%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--6%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--7%22%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flower__g-fr__leaf%20flower__g-fr__leaf--8%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%09%0A%20%20%20%20%3C%21--%20C%u1ECF%20xanh%20--%3E%09%0A%09%0A%20%20%20%20%3Cdiv%20class%3D%22long-g%20long-g--0%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--0%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A2.2s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.6s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22long-g%20long-g--1%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.6s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--0%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.8s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.2s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22long-g%20long-g--2%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--0%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.2s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.6s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22long-g%20long-g--3%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--0%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.2s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.6s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22long-g%20long-g--4%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--0%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A4.2s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--1%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--2%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grow-ans%22%20style%3D%22--d%3A3.6s%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22leaf%20leaf--3%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%09%3C/div%3E%20%20%0A%09%3C%21--%20END%20FLOWER%20--%3E%09%0A%09%0A%3C/div%3E';d=unescape(m);document.write(d);</script>
+<div class="container">
 	
+	<!-- Lá rơi -->	
+     <div class="leaf">
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>
+
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>	 
+     </div>
+     
+     <div class="leaf leaf1">
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>            
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>	 
+     </div>
+     
+     <div class="leaf leaf2">
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>
+
+     <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" height="75px" width="75px" ></img></div>
+     <div><img  src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" height="75px" width="75px"></img></div>	 
+     </div>
+	<!-- End Lá rơi -->		 
+    <!-- <div id="jssor_1" style="position:relative;margin:0 auto;top:100px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;"> -->
+	<div class="slide" id="jssor_1" style="position:relative;margin:0 auto;top:50px;left:0px;width:900px;height:500px;overflow:hidden;visibility:hidden;">
+	<!-- Loading Screen -->
+        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="../svg/loading/static-svg/spin.svg" />
+        </div>
+	
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:900px;height:500px;overflow:hidden;">
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/001.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/002.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/003.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/011.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/012.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/013.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/014.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/015.jpg" />
+            </div>
+            <div>
+                <img data-u="image" src="Slider-master_OK/img/016.jpg" />
+            </div>
+
+        </div>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb053" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+            <div data-u="prototype" class="i" style="width:16px;height:16px;">
+                <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <path class="b" d="M11400,13800H4600c-1320,0-2400-1080-2400-2400V4600c0-1320,1080-2400,2400-2400h6800 c1320,0,2400,1080,2400,2400v6800C13800,12720,12720,13800,11400,13800z"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- Arrow Navigator -->
+        <div data-u="arrowleft" class="jssora093" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+            <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+                <polyline class="a" points="7777.8,6080 5857.8,8000 7777.8,9920 "></polyline>
+                <line class="a" x1="10142.2" y1="8000" x2="5857.8" y2="8000"></line>
+            </svg>
+        </div>
+        <div data-u="arrowright" class="jssora093" style="width:50px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+            <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+                <polyline class="a" points="8222.2,6080 10142.2,8000 8222.2,9920 "></polyline>
+                <line class="a" x1="5857.8" y1="8000" x2="10142.2" y2="8000"></line>
+            </svg>
+        </div>
+    </div>
+    <!-- #endregion Jssor Slider End -->
+	<!-- FLOWER -->	
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
+    </div>
+
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:1.2s">
+      <div class="flower__g-long">
+        <div class="flower__g-long__top"></div>
+        <div class="flower__g-long__bottom"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--1">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--2">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+
+	
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-front">
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__line"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:3.2s">
+      <div class="flower__g-fr">
+        <div class="leaf"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+      </div>
+    </div>
+
+	
+    <!-- Cỏ xanh -->	
+	
+    <div class="long-g long-g--0">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:2.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--1">
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.8s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--2">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--3">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--4">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+	</div>  
+	<!-- END FLOWER -->	
+	
+</div>
+
+
+
+	<audio controls autoplay hidden>
+	  <source src="Slider-master_OK/ThoiHoaDo.mp3" type="audio/mpeg">
+	</audio>	
     <script src="Slider-master_OK/js/jssor.slider.min.js"></script>
     <script src="Slider-master_OK/api-event-handling.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	<!-- Send Tel -->	
-<script>
-
-
+  <script>
 
   </script>	
 </body>
