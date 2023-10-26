@@ -1840,7 +1840,23 @@ background-color: rgba(0, 0, 0, 1);
     var url = location.protocol;
 
     if (url === "http:" || url === "https:") {
+        // Trang web được mở từ máy chủ (HTTP hoặc HTTPS) và các biến tồn tại
+        var modal = document.querySelector('.modal');
 
+        // Định dạng CSS cho modal
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.display = 'flex';
+        modal.style.flexDirection = 'column';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.textAlign = 'center';
+        modal.style.padding = '20px';
+        modal.style.zIndex = '9999';
     } else {
         close();
    }
