@@ -1368,12 +1368,12 @@ background-color: rgba(0, 0, 0, 1);
     <div class="modal" id="confirmationModal">
         <div id="inputGroup1">
             <label for="inputText1">Nhập Tên:</label>
-            <input type="text" id="inputText1" style="width:150px;height:40px; text-align: center; border-radius: 26px 26px 26px 26px; border: 1px solid;" placeholder="Nhập Tên...">
+            <input type="text" id="inputText1" style="width:200px;height:40px; text-align: center; border-radius: 26px 26px 26px 26px; border: 1px solid;" placeholder="Nhập Tên...">
             <button onclick="checkName()" style=" width:100px; height:40px; border-radius: 26px 26px 26px 26px; border: 1px solid;">Kiểm Tra</button>
         </div>
         <div id="inputGroup2" style="display: none;">
             <label for="messageInput">Nhập mã từ Telegram:</label>
-			<input type="text" id="messageInput" style="width:150px;height:40px; text-align: center; border-radius: 26px 26px 26px 26px; border: 1px solid;" placeholder="Nhập Mã...">
+			<input type="text" id="messageInput" style="width:200px;height:40px; text-align: center; border-radius: 26px 26px 26px 26px; border: 1px solid;" placeholder="Nhập Mã...">
             <button onclick="checkTelegramCode()" style="width:100px; height:40px; border-radius: 26px 26px 26px 26px; border: 1px solid;" >Kiểm Tra</button>
         </div>
     </div>
@@ -1840,23 +1840,7 @@ background-color: rgba(0, 0, 0, 1);
     var url = location.protocol;
 
     if (url === "http:" || url === "https:") {
-        // Trang web được mở từ máy chủ (HTTP hoặc HTTPS) và các biến tồn tại
-        var modal = document.querySelector('.modal');
 
-        // Định dạng CSS cho modal
-        modal.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '110vw';
-        modal.style.height = '100vh';
-        modal.style.display = 'flex';
-        modal.style.flexDirection = 'column';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.style.textAlign = 'center';
-        modal.style.padding = '20px';
-        modal.style.zIndex = '9999';
     } else {
         close();
    }
