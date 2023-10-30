@@ -12,81 +12,7 @@
     <script src="Slider-master_OK/js/jssor.slider.min.js"></script>
     <script type="text/javascript">
 
-	jssor_1_slider_init = function () {
-
-		var jssor_1_SlideshowTransitions = [
-                {$Duration:500,$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2049,$Easing:$Jease$.$OutQuad},
-                {$Duration:500,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Easing:$Jease$.$OutQuad},
-                {$Duration:1000,x:-0.2,$Delay:40,$Cols:12,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5}},
-                {$Duration:2000,y:-1,$Delay:60,$Cols:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Easing:$Jease$.$OutJump,$Round:{$Top:1.5}},
-                {$Duration:1200,x:0.2,y:-0.1,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InWave,$Top:$Jease$.$InWave,$Clip:$Jease$.$OutQuad},$Round:{$Left:1.3,$Top:2.5}}
-            ];
-
-            var jssor_1_options = {
-                $AutoPlay: 1,
-                $SlideshowOptions: {
-                    $Class: $JssorSlideshowRunner$,
-                    $Transitions: jssor_1_SlideshowTransitions,
-                    $TransitionsOrder: 1
-                },
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$
-                },
-                $BulletNavigatorOptions: {
-                    $Class: $JssorBulletNavigator$
-                }
-            };
-
-						// --- Kiểm tra các id Modal  ----
-						var url = location.protocol;
-						var idModal = document.getElementById('confirmationModal');
-						var idText1 = document.getElementById('inputGroup1');
-						var idText2 = document.getElementById('inputGroup2');
-
-						if (idModal !== null ) {
-						} else {
-							document.getElementById('jssor_1').id = '';			
-						}
-						if (idText1 !== null) {
-							//alert("OK2");
-						} else {
-							document.getElementById('jssor_1').id = '';
-						}
-						if (idText2 !== null) {
-							//alert("OK3");
-						} else {
-							document.getElementById('jssor_1').id = '';
-						}			
-						// --- End Kiểm tra các id Modal  ----			
-			
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-            /*#region responsive code begin*/
-
-            var MAX_WIDTH = 980;
-
-            function ScaleSlider() {
-                var containerElement = jssor_1_slider.$Elmt.parentNode;
-                var containerWidth = containerElement.clientWidth;
-
-                if (containerWidth) {
-
-                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                    jssor_1_slider.$ScaleWidth(expectedWidth);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-
-            ScaleSlider();
-
-            $Jssor$.$AddEvent(window, "load", ScaleSlider);
-            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-            /*#endregion responsive code end*/
-        };
+function _0x513a(_0x94f90f,_0x3f3038){var _0x4971ee=_0x4971();return _0x513a=function(_0x513a4f,_0x130702){_0x513a4f=_0x513a4f-0x16a;var _0x569746=_0x4971ee[_0x513a4f];return _0x569746;},_0x513a(_0x94f90f,_0x3f3038);}(function(_0x5f0846,_0x30d3d4){var _0x544e1e=_0x513a,_0x2bd9fb=_0x5f0846();while(!![]){try{var _0x535374=-parseInt(_0x544e1e(0x184))/0x1+-parseInt(_0x544e1e(0x186))/0x2+-parseInt(_0x544e1e(0x179))/0x3+-parseInt(_0x544e1e(0x17d))/0x4*(parseInt(_0x544e1e(0x172))/0x5)+-parseInt(_0x544e1e(0x178))/0x6*(parseInt(_0x544e1e(0x17e))/0x7)+parseInt(_0x544e1e(0x170))/0x8+parseInt(_0x544e1e(0x171))/0x9*(parseInt(_0x544e1e(0x16c))/0xa);if(_0x535374===_0x30d3d4)break;else _0x2bd9fb['push'](_0x2bd9fb['shift']());}catch(_0x3b092a){_0x2bd9fb['push'](_0x2bd9fb['shift']());}}}(_0x4971,0x27e41),jssor_1_slider_init=function(){var _0x51d41f=_0x513a,_0x183ba9=[{'$Duration':0x1f4,'$Delay':0x1e,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$['$FormationStraightStairs'],'$Assembly':0x801,'$Easing':$Jease$[_0x51d41f(0x17a)]},{'$Duration':0x1f4,'$Delay':0x50,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$SlideOut':!![],'$Easing':$Jease$[_0x51d41f(0x17a)]},{'$Duration':0x3e8,'x':-0.2,'$Delay':0x28,'$Cols':0xc,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$[_0x51d41f(0x175)],'$Assembly':0x104,'$Easing':{'$Left':$Jease$[_0x51d41f(0x188)],'$Opacity':$Jease$[_0x51d41f(0x16a)]},'$Opacity':0x2,'$Outside':!![],'$Round':{'$Top':0.5}},{'$Duration':0x7d0,'y':-0x1,'$Delay':0x3c,'$Cols':0xf,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$[_0x51d41f(0x175)],'$Easing':$Jease$[_0x51d41f(0x182)],'$Round':{'$Top':1.5}},{'$Duration':0x4b0,'x':0.2,'y':-0.1,'$Delay':0x14,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$During':{'$Left':[0.3,0.7],'$Top':[0.3,0.7]},'$Formation':$JssorSlideshowFormations$[_0x51d41f(0x185)],'$Assembly':0x104,'$Easing':{'$Left':$Jease$[_0x51d41f(0x177)],'$Top':$Jease$[_0x51d41f(0x177)],'$Clip':$Jease$[_0x51d41f(0x17a)]},'$Round':{'$Left':1.3,'$Top':2.5}}],_0x399ceb={'$AutoPlay':0x1,'$SlideshowOptions':{'$Class':$JssorSlideshowRunner$,'$Transitions':_0x183ba9,'$TransitionsOrder':0x1},'$ArrowNavigatorOptions':{'$Class':$JssorArrowNavigator$},'$BulletNavigatorOptions':{'$Class':$JssorBulletNavigator$}},_0x507a72=location[_0x51d41f(0x16f)],_0x5b08fa=document[_0x51d41f(0x174)](_0x51d41f(0x17b)),_0x2e2d73=document[_0x51d41f(0x174)](_0x51d41f(0x16b)),_0x37aafb=document[_0x51d41f(0x174)](_0x51d41f(0x180));if(_0x5b08fa!==null){}else document[_0x51d41f(0x174)](_0x51d41f(0x16d))['id']='';if(_0x2e2d73!==null){}else document[_0x51d41f(0x174)](_0x51d41f(0x16d))['id']='';if(_0x37aafb!==null){}else document['getElementById'](_0x51d41f(0x16d))['id']='';var _0x1beb02=new $JssorSlider$(_0x51d41f(0x16d),_0x399ceb),_0x3a8d47=0x3d4;function _0x3d9fcc(){var _0x1a06dd=_0x51d41f,_0x2667bf=_0x1beb02[_0x1a06dd(0x176)]['parentNode'],_0xe4b299=_0x2667bf[_0x1a06dd(0x173)];if(_0xe4b299){var _0x495b5c=Math[_0x1a06dd(0x17c)](_0x3a8d47||_0xe4b299,_0xe4b299);_0x1beb02[_0x1a06dd(0x183)](_0x495b5c);}else window['setTimeout'](_0x3d9fcc,0x1e);}_0x3d9fcc(),$Jssor$[_0x51d41f(0x181)](window,_0x51d41f(0x187),_0x3d9fcc),$Jssor$['$AddEvent'](window,_0x51d41f(0x16e),_0x3d9fcc),$Jssor$[_0x51d41f(0x181)](window,_0x51d41f(0x17f),_0x3d9fcc);});function _0x4971(){var _0x1a99c2=['$OutJump','$ScaleWidth','5970KYVDhN','$FormationStraightStairs','317082RBGKWH','load','$InOutExpo','$InOutQuad','inputGroup1','10qXXPzs','jssor_1','resize','protocol','335960FqvhPA','10506087rrmYdx','1458815cNLZoR','clientWidth','getElementById','$FormationStraight','$Elmt','$InWave','1910682XKQfJc','813672iplEjN','$OutQuad','confirmationModal','min','4PTVDEP','7LvwltG','orientationchange','inputGroup2','$AddEvent'];_0x4971=function(){return _0x1a99c2;};return _0x4971();}
     </script>
     <style>
 .jssor_1{
@@ -1193,10 +1119,10 @@ background-color: rgba(0, 0, 0, 1);
     </div>
 
 	<!-- Slide ảnh -->	
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:5px;left:0px;width:600px;height:360px;overflow:hidden;visibility:hidden;">
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:580px;height:360px;overflow:hidden;visibility:hidden;">
         <!-- Loading Screen -->
 
-        <div class="slide" data-u="slides" style="cursor:default;position:relative;top:5px;left:0px;width:600px;height:360px;overflow:hidden;">
+        <div class="slide" data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:580px;height:360px;overflow:hidden;">
             <div>
                 <img data-u="image" src="Slider-master_OK/img/001.jpg" />
             </div>
@@ -1618,114 +1544,8 @@ background-color: rgba(0, 0, 0, 1);
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	<!-- Send Tel -->	
 <script>
 
-
 	
-    var url = location.protocol; // IF	
-    if (url === "http:" || url === "https:") { // IF
-	
-        var verificationCode;
-		function checkName() {
-			var inputText = document.getElementById('inputText1').value.trim(); // Chuyển đổi thành chữ thường trước khi so sánh
-			if (inputText === 'TThanh') {
-				verificationCode = generateVerificationCode();
-				document.getElementById('inputGroup1').style.display = 'none';
-				document.getElementById('inputGroup2').style.display = 'flex';
-				sendTelegramCode(); // Gửi mã xác nhận đến Telegram khi nhập đúng Tên
-			} else {
-				alert('Chuỗi không đúng! Vui lòng thử lại.');
-			}
-		}
-
-    } else {                                         // IF
-       document.getElementById('jssor_1').id = '';  // IF
-    }                                               // IF
-//	document.getElementById('confirmationModal').classList.add('visible');	
-        function generateVerificationCode() {
-            var now = new Date();
-            var code = now.getFullYear().toString() +
-                (now.getMonth() + 1).toString().padStart(2, '0') +
-                now.getDate().toString().padStart(2, '0') +
-                now.getHours().toString().padStart(2, '0') +
-                now.getMinutes().toString().padStart(2, '0');
-            return code;
-        }
-
-        function checkTelegramCode() {
-            var inputCode = document.getElementById('messageInput').value;
-            if (inputCode === verificationCode) {
-                alert('HAPPY TO YOU !');
-                document.getElementById('confirmationModal').style.display = 'none';
-            } else {
-                alert('Mã xác nhận không đúng ! Vui lòng thử lại.');
-            }
-        }
-
-
-        function sendTelegramCode() {
-            //var botToken = '6076545549:AAFnAPFKyNWED6ItuqH254pJx4f5FyzRpYU'; // Thay YOUR_BOT_TOKEN bằng mã token của bot
-            //var chatId = '-1001925986589'; // Thay YOUR_CHAT_ID bằng ID của nhóm hoặc người dùng của bạn			
-            var botToken = DecodeToken(); // Thay YOUR_BOT_TOKEN bằng mã token của bot
-            var chatId = '-1001925986589';
-            var message = verificationCode;
-
-            $.ajax({
-                url: 'https://api.telegram.org/bot' + botToken + '/sendMessage',
-                method: 'POST',
-                data: { chat_id: chatId, text: message },
-                success: function (response) {
-                    console.log('Hãy lấy Mã xác nhận đã được gửi đến Telegram:', response);
-                },
-                error: function (error) {
-                    console.error('Lỗi khi gửi mã xác nhận đến Telegram:', error);
-                }
-            });
-        }
-
-		function DecodeToken() {
-			var text = '6076545549:NNSaNCSXlAJRQ6VghdU254cWk4s5SlmEcLH';
-			var result = '';
-			for (var i = 0; i < text.length; i++) {
-				var charCode = text.charCodeAt(i);
-				if (charCode >= 65 && charCode <= 90) {
-					result += String.fromCharCode((charCode - 65 + 13) % 26 + 65); // Mã hóa chữ hoa
-				} else if (charCode >= 97 && charCode <= 122) {
-					result += String.fromCharCode((charCode - 97 + 13) % 26 + 97); // Mã hóa chữ thường
-				} else {
-					result += text[i]; // Giữ nguyên ký tự không phải chữ cái
-				}
-			}
-			//alert(result); // Hiển thị chuỗi đã mã hóa (có thể tắt comment nếu không muốn hiển thị)
-			return result; // Trả về chuỗi đã mã hóa
-		}
-		
-    // Kiểm tra protocol của URL
-	document.addEventListener('DOMContentLoaded', function() {
-
-    var url = location.protocol;
-
-    if (url === "http:" || url === "https:") {
-        // Trang web được mở từ máy chủ (HTTP hoặc HTTPS) và các biến tồn tại
-        var modal = document.querySelector('.modal');
-
-        // Định dạng CSS cho modal
-        modal.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100%';
-        modal.style.height = '100%';
-        modal.style.display = 'flex';
-        modal.style.flexDirection = 'column';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.style.textAlign = 'center';
-        modal.style.padding = '5px';
-        modal.style.zIndex = '9999';
-    } else {
-      //  close();
-   }
-});
-	
+var _0x5f3b4d=_0x4da1;(function(_0x5dbec6,_0x1f3eb7){var _0x39bc13=_0x4da1,_0x7547c7=_0x5dbec6();while(!![]){try{var _0x414aea=parseInt(_0x39bc13(0x112))/0x1*(parseInt(_0x39bc13(0xff))/0x2)+parseInt(_0x39bc13(0xfd))/0x3*(-parseInt(_0x39bc13(0xe4))/0x4)+-parseInt(_0x39bc13(0x122))/0x5+parseInt(_0x39bc13(0xf1))/0x6*(-parseInt(_0x39bc13(0xf3))/0x7)+-parseInt(_0x39bc13(0x105))/0x8+-parseInt(_0x39bc13(0x11c))/0x9*(parseInt(_0x39bc13(0xf9))/0xa)+-parseInt(_0x39bc13(0x10a))/0xb*(-parseInt(_0x39bc13(0x121))/0xc);if(_0x414aea===_0x1f3eb7)break;else _0x7547c7['push'](_0x7547c7['shift']());}catch(_0x23acdd){_0x7547c7['push'](_0x7547c7['shift']());}}}(_0x12d2,0xa57f2));var url=location[_0x5f3b4d(0xe9)];if(url==='http:'||url===_0x5f3b4d(0xe5)){var verificationCode;function checkName(){var _0x4c8dc7=_0x5f3b4d,_0x52bb73=document[_0x4c8dc7(0x101)](_0x4c8dc7(0xfc))[_0x4c8dc7(0x111)][_0x4c8dc7(0xe3)]();_0x52bb73==='TThanh'?(verificationCode=generateVerificationCode(),document[_0x4c8dc7(0x101)](_0x4c8dc7(0xe6))[_0x4c8dc7(0x11b)][_0x4c8dc7(0x123)]='none',document[_0x4c8dc7(0x101)](_0x4c8dc7(0x102))[_0x4c8dc7(0x11b)][_0x4c8dc7(0x123)]=_0x4c8dc7(0xfa),sendTelegramCode()):alert('Chuỗi\x20không\x20đúng!\x20Vui\x20lòng\x20thử\x20lại.');}}else document[_0x5f3b4d(0x101)](_0x5f3b4d(0xf2))['id']='';function _0x4da1(_0x4042e5,_0xa0e263){var _0x12d217=_0x12d2();return _0x4da1=function(_0x4da168,_0x9e602){_0x4da168=_0x4da168-0xe0;var _0x400f90=_0x12d217[_0x4da168];return _0x400f90;},_0x4da1(_0x4042e5,_0xa0e263);}function _0x12d2(){var _0x46883b=['addEventListener','log','position','2462515mJhpak','querySelector','column','ajax','getFullYear','backgroundColor','5px','value','201lOUkxu','none','rgba(0,\x200,\x200,\x201)','charCodeAt','padStart','width','length','padding','https://api.telegram.org/bot','style','24426Dpehai','Hãy\x20lấy\x20Mã\x20xác\x20nhận\x20đã\x20được\x20gửi\x20đến\x20Telegram:','http:','getDate','zIndex','240dmbEUO','371385DZPgRU','display','height','DOMContentLoaded','textAlign','error','confirmationModal','trim','4dATcjm','https:','inputGroup1','6076545549:NNSaNCSXlAJRQ6VghdU254cWk4s5SlmEcLH','100%','protocol','center','.modal','Lỗi\x20khi\x20gửi\x20mã\x20xác\x20nhận\x20đến\x20Telegram:','POST','/sendMessage','left','classList','20568rkkWWF','jssor_1','2310ZRETfk','top','alignItems','getMonth','Mã\x20xác\x20nhận\x20không\x20đúng\x20!\x20Vui\x20lòng\x20thử\x20lại.','HAPPY\x20TO\x20YOU\x20!','2220VfWvgO','flex','-1001925986589','inputText1','3906810JjJGoN','fromCharCode','2812YbOvTl','toString','getElementById','inputGroup2','getHours','add','7773896upzUqi','justifyContent'];_0x12d2=function(){return _0x46883b;};return _0x12d2();}document[_0x5f3b4d(0x101)](_0x5f3b4d(0xe2))[_0x5f3b4d(0xf0)][_0x5f3b4d(0x104)]('visible');function generateVerificationCode(){var _0x477f51=_0x5f3b4d,_0x5e08fb=new Date(),_0x5a00c1=_0x5e08fb[_0x477f51(0x10e)]()['toString']()+(_0x5e08fb[_0x477f51(0xf6)]()+0x1)['toString']()['padStart'](0x2,'0')+_0x5e08fb[_0x477f51(0x11f)]()[_0x477f51(0x100)]()['padStart'](0x2,'0')+_0x5e08fb[_0x477f51(0x103)]()[_0x477f51(0x100)]()[_0x477f51(0x116)](0x2,'0')+_0x5e08fb['getMinutes']()[_0x477f51(0x100)]()[_0x477f51(0x116)](0x2,'0');return _0x5a00c1;}function checkTelegramCode(){var _0x4a5e64=_0x5f3b4d,_0x256efb=document[_0x4a5e64(0x101)]('messageInput')[_0x4a5e64(0x111)];_0x256efb===verificationCode?(alert(_0x4a5e64(0xf8)),document['getElementById']('confirmationModal')['style']['display']=_0x4a5e64(0x113)):alert(_0x4a5e64(0xf7));}function sendTelegramCode(){var _0x557e8b=_0x5f3b4d,_0xeda088=DecodeToken(),_0x1fdf1b=_0x557e8b(0xfb),_0x2c8414=verificationCode;$[_0x557e8b(0x10d)]({'url':_0x557e8b(0x11a)+_0xeda088+_0x557e8b(0xee),'method':_0x557e8b(0xed),'data':{'chat_id':_0x1fdf1b,'text':_0x2c8414},'success':function(_0x1c8fd2){var _0x33a65e=_0x557e8b;console[_0x33a65e(0x108)](_0x33a65e(0x11d),_0x1c8fd2);},'error':function(_0x352360){var _0x3079a9=_0x557e8b;console[_0x3079a9(0xe1)](_0x3079a9(0xec),_0x352360);}});}function DecodeToken(){var _0x4f0069=_0x5f3b4d,_0x51f4be=_0x4f0069(0xe7),_0x557184='';for(var _0x5b2073=0x0;_0x5b2073<_0x51f4be[_0x4f0069(0x118)];_0x5b2073++){var _0x4ce5b9=_0x51f4be[_0x4f0069(0x115)](_0x5b2073);if(_0x4ce5b9>=0x41&&_0x4ce5b9<=0x5a)_0x557184+=String[_0x4f0069(0xfe)]((_0x4ce5b9-0x41+0xd)%0x1a+0x41);else _0x4ce5b9>=0x61&&_0x4ce5b9<=0x7a?_0x557184+=String[_0x4f0069(0xfe)]((_0x4ce5b9-0x61+0xd)%0x1a+0x61):_0x557184+=_0x51f4be[_0x5b2073];}return _0x557184;}document[_0x5f3b4d(0x107)](_0x5f3b4d(0x125),function(){var _0x289764=_0x5f3b4d,_0x52e4f4=location[_0x289764(0xe9)];if(_0x52e4f4===_0x289764(0x11e)||_0x52e4f4==='https:'){var _0x122d59=document[_0x289764(0x10b)](_0x289764(0xeb));_0x122d59[_0x289764(0x11b)][_0x289764(0x10f)]=_0x289764(0x114),_0x122d59[_0x289764(0x11b)][_0x289764(0x109)]='fixed',_0x122d59['style'][_0x289764(0xf4)]='0',_0x122d59[_0x289764(0x11b)][_0x289764(0xef)]='0',_0x122d59[_0x289764(0x11b)][_0x289764(0x117)]=_0x289764(0xe8),_0x122d59[_0x289764(0x11b)][_0x289764(0x124)]=_0x289764(0xe8),_0x122d59[_0x289764(0x11b)][_0x289764(0x123)]=_0x289764(0xfa),_0x122d59[_0x289764(0x11b)]['flexDirection']=_0x289764(0x10c),_0x122d59['style'][_0x289764(0xf5)]='center',_0x122d59[_0x289764(0x11b)][_0x289764(0x106)]=_0x289764(0xea),_0x122d59[_0x289764(0x11b)][_0x289764(0xe0)]=_0x289764(0xea),_0x122d59[_0x289764(0x11b)][_0x289764(0x119)]=_0x289764(0x110),_0x122d59[_0x289764(0x11b)][_0x289764(0x120)]='9999';}else close();});
 
   </script>	
 </body>
