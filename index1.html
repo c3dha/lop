@@ -13,193 +13,7 @@
     <script src="Slider-master_OK/js/jssor.slider.min.js"></script>
     <script type="text/javascript">
 
-    var url = location.protocol; // IF	
-//    if (url === "http:" || url === "https:") { // IF
-	
-        var verificationCode;
-		function checkName() {
-			var inputText = document.getElementById('inputText1').value.trim(); // Chuyển đổi thành chữ thường trước khi so sánh
-			if (inputText === 'TThanh') {
-				verificationCode = generateVerificationCode();
-				document.getElementById('inputGroup1').style.display = 'none';
-				document.getElementById('inputGroup2').style.display = 'flex';
-				sendTelegramCode(); // Gửi mã xác nhận đến Telegram khi nhập đúng Tên
-			} else {
-				alert('Chuỗi không đúng! Vui lòng thử lại.');
-			}
-		}
-
-//    } else {                                         // IF
-//       document.getElementById('jssor_1').id = '';  // IF
-//    }                                               // IF
-
-        function generateVerificationCode() {
-            var now = new Date();
-            var code = now.getFullYear().toString() +
-                (now.getMonth() + 1).toString().padStart(2, '0') +
-                now.getDate().toString().padStart(2, '0') +
-                now.getHours().toString().padStart(2, '0') +
-                now.getMinutes().toString().padStart(2, '0');
-            return code;
-        }
-
-        function checkTelegramCode() {
-            var inputCode = document.getElementById('messageInput').value;
-            if (inputCode === verificationCode) {
-                alert('HAPPY TO YOU !');
-                document.getElementById('confirmationModal').style.display = 'none';
-            } else {
-                alert('Mã xác nhận không đúng ! Vui lòng thử lại.');
-            }
-        }
-
-
-        function sendTelegramCode() {
-            //var botToken = '6076545549:AAFnAPFKyNWED6ItuqH254pJx4f5FyzRpYU'; // Thay YOUR_BOT_TOKEN bằng mã token của bot
-            //var chatId = '-1001925986589'; // Thay YOUR_CHAT_ID bằng ID của nhóm hoặc người dùng của bạn			
-            var botToken = DecodeToken(); // Thay YOUR_BOT_TOKEN bằng mã token của bot
-            var chatId = '-1001925986589';
-            var message = verificationCode;
-
-            $.ajax({
-                url: 'https://api.telegram.org/bot' + botToken + '/sendMessage',
-                method: 'POST',
-                data: { chat_id: chatId, text: message },
-                success: function (response) {
-                    console.log('Hãy lấy Mã xác nhận đã được gửi đến Telegram:', response);
-                },
-                error: function (error) {
-                    console.error('Lỗi khi gửi mã xác nhận đến Telegram:', error);
-                }
-            });
-        }
-
-		function DecodeToken() {
-			var text = '6076545549:NNSaNCSXlAJRQ6VghdU254cWk4s5SlmEcLH';
-			var result = '';
-			for (var i = 0; i < text.length; i++) {
-				var charCode = text.charCodeAt(i);
-				if (charCode >= 65 && charCode <= 90) {
-					result += String.fromCharCode((charCode - 65 + 13) % 26 + 65); // Mã hóa chữ hoa
-				} else if (charCode >= 97 && charCode <= 122) {
-					result += String.fromCharCode((charCode - 97 + 13) % 26 + 97); // Mã hóa chữ thường
-				} else {
-					result += text[i]; // Giữ nguyên ký tự không phải chữ cái
-				}
-			}
-			//alert(result); // Hiển thị chuỗi đã mã hóa (có thể tắt comment nếu không muốn hiển thị)
-			return result; // Trả về chuỗi đã mã hóa
-		}
-			
-	// Code Slide
-	jssor_1_slider_init = function () {
-
-		var jssor_1_SlideshowTransitions = [
-                {$Duration:500,$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2049,$Easing:$Jease$.$OutQuad},
-                {$Duration:500,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Easing:$Jease$.$OutQuad},
-                {$Duration:1000,x:-0.2,$Delay:40,$Cols:12,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5}},
-                {$Duration:2000,y:-1,$Delay:60,$Cols:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Easing:$Jease$.$OutJump,$Round:{$Top:1.5}},
-                {$Duration:1200,x:0.2,y:-0.1,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InWave,$Top:$Jease$.$InWave,$Clip:$Jease$.$OutQuad},$Round:{$Left:1.3,$Top:2.5}}
-            ];
-
-            var jssor_1_options = {
-                $AutoPlay: 1,
-                $SlideshowOptions: {
-                    $Class: $JssorSlideshowRunner$,
-                    $Transitions: jssor_1_SlideshowTransitions,
-                    $TransitionsOrder: 1
-                },
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$
-                },
-                $BulletNavigatorOptions: {
-                    $Class: $JssorBulletNavigator$
-                }
-            };
-
-						// --- Kiểm tra các id Modal  ----
-						var url = location.protocol;
-						var idModal = document.getElementById('confirmationModal');
-						var idText1 = document.getElementById('inputGroup1');
-						var idText2 = document.getElementById('inputGroup2');
-
-						if (idModal !== null ) {
-						} else {
-							document.getElementById('jssor_1').id = '';			
-						}
-						if (idText1 !== null) {
-							//alert("OK2");
-						} else {
-							document.getElementById('jssor_1').id = '';
-						}
-						if (idText2 !== null) {
-							//alert("OK3");
-						} else {
-							document.getElementById('jssor_1').id = '';
-						}			
-						// --- End Kiểm tra các id Modal  ----			
-			
-			// Code Slide
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-            /*#region responsive code begin*/
-
-            var MAX_WIDTH = 980;
-
-
-//	document.getElementById('confirmationModal').classList.add('visible');	//Bật hoặc tắt lệnh này	
-	
-            function ScaleSlider() {
-                var containerElement = jssor_1_slider.$Elmt.parentNode;
-                var containerWidth = containerElement.clientWidth;
-
-                if (containerWidth) {
-
-                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                    jssor_1_slider.$ScaleWidth(expectedWidth);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-
-	//--- Kiểm tra Offline ---
-		document.addEventListener('DOMContentLoaded', function() {
-		var url = location.protocol;
-		if (url === "http:" || url === "https:") {
-	 
-					var modal = document.querySelector('.modal');
-
-					// Định dạng CSS cho modal
-					modal.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-					modal.style.position = 'fixed';
-					modal.style.top = '0';
-					modal.style.left = '0';
-					modal.style.width = '100%';
-					modal.style.height = '100%';
-					modal.style.display = 'flex';
-					modal.style.flexDirection = 'column';
-					modal.style.alignItems = 'center';
-					modal.style.justifyContent = 'center';
-					modal.style.textAlign = 'center';
-					modal.style.padding = '5px';
-					modal.style.zIndex = '9999';
-				} else {
-				   // close();
-			   }
-		});			
-
-	//--- End Kiểm tra Offline ---			
-
-			// Code Slide	
-            ScaleSlider();
-
-            $Jssor$.$AddEvent(window, "load", ScaleSlider);
-            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-            /*#endregion responsive code end*/
-        };
+var _0x3e7f57=_0x41f5;(function(_0x3eae5e,_0x3b3e55){var _0x4a20e8=_0x41f5,_0x2c6c38=_0x3eae5e();while(!![]){try{var _0x477eab=-parseInt(_0x4a20e8(0x1e7))/0x1*(-parseInt(_0x4a20e8(0x212))/0x2)+-parseInt(_0x4a20e8(0x20e))/0x3+parseInt(_0x4a20e8(0x1d4))/0x4*(-parseInt(_0x4a20e8(0x203))/0x5)+-parseInt(_0x4a20e8(0x205))/0x6+-parseInt(_0x4a20e8(0x207))/0x7+-parseInt(_0x4a20e8(0x20f))/0x8*(-parseInt(_0x4a20e8(0x200))/0x9)+parseInt(_0x4a20e8(0x1c9))/0xa;if(_0x477eab===_0x3b3e55)break;else _0x2c6c38['push'](_0x2c6c38['shift']());}catch(_0x5fe95b){_0x2c6c38['push'](_0x2c6c38['shift']());}}}(_0xadd3,0x3a548));var url=location[_0x3e7f57(0x1e4)];function _0x41f5(_0x405ec5,_0x34bf32){var _0xadd34a=_0xadd3();return _0x41f5=function(_0x41f5c9,_0x2078d4){_0x41f5c9=_0x41f5c9-0x1c4;var _0x3bd65b=_0xadd34a[_0x41f5c9];return _0x3bd65b;},_0x41f5(_0x405ec5,_0x34bf32);}if(url===_0x3e7f57(0x1e2)||url===_0x3e7f57(0x1cb)){var verificationCode;function checkName(){var _0x108d5e=_0x3e7f57,_0x1b47b3=document['getElementById'](_0x108d5e(0x209))['value'][_0x108d5e(0x1f6)]();_0x1b47b3==='TThanh'?(verificationCode=generateVerificationCode(),document[_0x108d5e(0x204)](_0x108d5e(0x1e6))[_0x108d5e(0x1fe)][_0x108d5e(0x1d2)]=_0x108d5e(0x1c8),document['getElementById'](_0x108d5e(0x1da))[_0x108d5e(0x1fe)][_0x108d5e(0x1d2)]=_0x108d5e(0x1f5),sendTelegramCode()):alert(_0x108d5e(0x1db));}}else document['getElementById'](_0x3e7f57(0x1d0))['id']='';function generateVerificationCode(){var _0x173ea7=_0x3e7f57,_0x183e28=new Date(),_0x3cb198=_0x183e28[_0x173ea7(0x1f8)]()['toString']()+(_0x183e28[_0x173ea7(0x20b)]()+0x1)[_0x173ea7(0x1f2)]()['padStart'](0x2,'0')+_0x183e28[_0x173ea7(0x1ff)]()[_0x173ea7(0x1f2)]()[_0x173ea7(0x1ee)](0x2,'0')+_0x183e28['getHours']()[_0x173ea7(0x1f2)]()[_0x173ea7(0x1ee)](0x2,'0')+_0x183e28[_0x173ea7(0x1fa)]()[_0x173ea7(0x1f2)]()[_0x173ea7(0x1ee)](0x2,'0');return _0x3cb198;}function checkTelegramCode(){var _0x27ee28=_0x3e7f57,_0x3b56b6=document[_0x27ee28(0x204)](_0x27ee28(0x1f1))[_0x27ee28(0x214)];_0x3b56b6===verificationCode?(alert('HAPPY\x20TO\x20YOU\x20!'),document[_0x27ee28(0x204)](_0x27ee28(0x1ea))[_0x27ee28(0x1fe)][_0x27ee28(0x1d2)]=_0x27ee28(0x1c8)):alert(_0x27ee28(0x206));}function _0xadd3(){var _0x5e8064=['padding','2ZOYogO','POST','value','alignItems','$OutQuad','100%','-1001925986589','none','6106950VNiuzm','$OutJump','https:','$FormationStraight','length','textAlign','DOMContentLoaded','jssor_1','fromCharCode','display','rgba(0,\x200,\x200,\x201)','389220nSPApN','.modal','error','load','querySelector','addEventListener','inputGroup2','Chuỗi\x20không\x20đúng!\x20Vui\x20lòng\x20thử\x20lại.','resize','height','$InOutExpo','visible','$FormationStraightStairs','orientationchange','http:','column','protocol','parentNode','inputGroup1','388986eGxdAc','left','$Elmt','confirmationModal','$InWave','center','5px','padStart','https://api.telegram.org/bot','min','messageInput','toString','clientWidth','backgroundColor','flex','trim','flexDirection','getFullYear','fixed','getMinutes','width','/sendMessage','classList','style','getDate','200205TIlkKK','Hãy\x20lấy\x20Mã\x20xác\x20nhận\x20đã\x20được\x20gửi\x20đến\x20Telegram:','ajax','5RNOXis','getElementById','2552964ercPXI','Mã\x20xác\x20nhận\x20không\x20đúng\x20!\x20Vui\x20lòng\x20thử\x20lại.','283304haxqCj','6076545549:NNSaNCSXlAJRQ6VghdU254cWk4s5SlmEcLH','inputText1','Lỗi\x20khi\x20gửi\x20mã\x20xác\x20nhận\x20đến\x20Telegram:','getMonth','add','position','1193085QeNkNw','72IUCNtz','$AddEvent'];_0xadd3=function(){return _0x5e8064;};return _0xadd3();}function sendTelegramCode(){var _0x343ce7=_0x3e7f57,_0x2c613c=DecodeToken(),_0x2c40df=_0x343ce7(0x1c7),_0x349e1c=verificationCode;$[_0x343ce7(0x202)]({'url':_0x343ce7(0x1ef)+_0x2c613c+_0x343ce7(0x1fc),'method':_0x343ce7(0x213),'data':{'chat_id':_0x2c40df,'text':_0x349e1c},'success':function(_0x1af1e1){var _0x184e65=_0x343ce7;console['log'](_0x184e65(0x201),_0x1af1e1);},'error':function(_0x2d167e){var _0x5aa9c0=_0x343ce7;console[_0x5aa9c0(0x1d6)](_0x5aa9c0(0x20a),_0x2d167e);}});}function DecodeToken(){var _0x57262c=_0x3e7f57,_0x35ef5e=_0x57262c(0x208),_0x7fd33d='';for(var _0x56505a=0x0;_0x56505a<_0x35ef5e[_0x57262c(0x1cd)];_0x56505a++){var _0x2a7ade=_0x35ef5e['charCodeAt'](_0x56505a);if(_0x2a7ade>=0x41&&_0x2a7ade<=0x5a)_0x7fd33d+=String[_0x57262c(0x1d1)]((_0x2a7ade-0x41+0xd)%0x1a+0x41);else _0x2a7ade>=0x61&&_0x2a7ade<=0x7a?_0x7fd33d+=String[_0x57262c(0x1d1)]((_0x2a7ade-0x61+0xd)%0x1a+0x61):_0x7fd33d+=_0x35ef5e[_0x56505a];}return _0x7fd33d;}jssor_1_slider_init=function(){var _0x23e829=_0x3e7f57,_0x5f5dca=[{'$Duration':0x1f4,'$Delay':0x1e,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$[_0x23e829(0x1e0)],'$Assembly':0x801,'$Easing':$Jease$[_0x23e829(0x1c5)]},{'$Duration':0x1f4,'$Delay':0x50,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$SlideOut':!![],'$Easing':$Jease$[_0x23e829(0x1c5)]},{'$Duration':0x3e8,'x':-0.2,'$Delay':0x28,'$Cols':0xc,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$['$FormationStraight'],'$Assembly':0x104,'$Easing':{'$Left':$Jease$[_0x23e829(0x1de)],'$Opacity':$Jease$['$InOutQuad']},'$Opacity':0x2,'$Outside':!![],'$Round':{'$Top':0.5}},{'$Duration':0x7d0,'y':-0x1,'$Delay':0x3c,'$Cols':0xf,'$SlideOut':!![],'$Formation':$JssorSlideshowFormations$[_0x23e829(0x1cc)],'$Easing':$Jease$[_0x23e829(0x1ca)],'$Round':{'$Top':1.5}},{'$Duration':0x4b0,'x':0.2,'y':-0.1,'$Delay':0x14,'$Cols':0x8,'$Rows':0x4,'$Clip':0xf,'$During':{'$Left':[0.3,0.7],'$Top':[0.3,0.7]},'$Formation':$JssorSlideshowFormations$[_0x23e829(0x1e0)],'$Assembly':0x104,'$Easing':{'$Left':$Jease$[_0x23e829(0x1eb)],'$Top':$Jease$[_0x23e829(0x1eb)],'$Clip':$Jease$[_0x23e829(0x1c5)]},'$Round':{'$Left':1.3,'$Top':2.5}}],_0x427157={'$AutoPlay':0x1,'$SlideshowOptions':{'$Class':$JssorSlideshowRunner$,'$Transitions':_0x5f5dca,'$TransitionsOrder':0x1},'$ArrowNavigatorOptions':{'$Class':$JssorArrowNavigator$},'$BulletNavigatorOptions':{'$Class':$JssorBulletNavigator$}},_0x37ab0b=location[_0x23e829(0x1e4)],_0x2e3f0e=document['getElementById'](_0x23e829(0x1ea)),_0x34ebab=document['getElementById'](_0x23e829(0x1e6)),_0x1f3378=document[_0x23e829(0x204)]('inputGroup2');if(_0x2e3f0e!==null){}else document[_0x23e829(0x204)](_0x23e829(0x1d0))['id']='';if(_0x34ebab!==null){}else document[_0x23e829(0x204)](_0x23e829(0x1d0))['id']='';if(_0x1f3378!==null){}else document[_0x23e829(0x204)](_0x23e829(0x1d0))['id']='';var _0x365430=new $JssorSlider$(_0x23e829(0x1d0),_0x427157),_0x5ae4d5=0x3d4;document['getElementById'](_0x23e829(0x1ea))[_0x23e829(0x1fd)][_0x23e829(0x20c)](_0x23e829(0x1df));function _0x3d8b91(){var _0x241501=_0x23e829,_0xdf1fa7=_0x365430[_0x241501(0x1e9)][_0x241501(0x1e5)],_0x3f2095=_0xdf1fa7[_0x241501(0x1f3)];if(_0x3f2095){var _0x5147ed=Math[_0x241501(0x1f0)](_0x5ae4d5||_0x3f2095,_0x3f2095);_0x365430['$ScaleWidth'](_0x5147ed);}else window['setTimeout'](_0x3d8b91,0x1e);}document[_0x23e829(0x1d9)](_0x23e829(0x1cf),function(){var _0x85de09=_0x23e829,_0x23eb19=location['protocol'];if(_0x23eb19===_0x85de09(0x1e2)||_0x23eb19===_0x85de09(0x1cb)){var _0x1ab7b7=document[_0x85de09(0x1d8)](_0x85de09(0x1d5));_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1f4)]=_0x85de09(0x1d3),_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x20d)]=_0x85de09(0x1f9),_0x1ab7b7['style']['top']='0',_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1e8)]='0',_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1fb)]=_0x85de09(0x1c6),_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1dd)]='100%',_0x1ab7b7[_0x85de09(0x1fe)]['display']=_0x85de09(0x1f5),_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1f7)]=_0x85de09(0x1e3),_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1c4)]=_0x85de09(0x1ec),_0x1ab7b7[_0x85de09(0x1fe)]['justifyContent']='center',_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x1ce)]='center',_0x1ab7b7[_0x85de09(0x1fe)][_0x85de09(0x211)]=_0x85de09(0x1ed),_0x1ab7b7[_0x85de09(0x1fe)]['zIndex']='9999';}else close();}),_0x3d8b91(),$Jssor$[_0x23e829(0x210)](window,_0x23e829(0x1d7),_0x3d8b91),$Jssor$[_0x23e829(0x210)](window,_0x23e829(0x1dc),_0x3d8b91),$Jssor$['$AddEvent'](window,_0x23e829(0x1e1),_0x3d8b91);};
     </script>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -1291,16 +1105,19 @@ background-color: rgba(0, 0, 0, 1);
 
 img {
   max-width: 100%;
+  z-index:1;
 }
 
 html,
 body,
 .js-ag-autumn-block {
   height: 100%;
+  z-index:1;
 }
 
 body {
   overflow: hidden;
+  z-index:1;
 }
 
 .js-ag-leaves-block {
@@ -1737,11 +1554,10 @@ body {
 
 .box {
 
-  margin: auto;
-  margin-top: 15%;
+
   background-color: #2e0219;
-  width:700px;
-  height:45px;
+  width:auto;
+  height:36px;
   border-radius: 50%;
    box-shadow:   
    0px -1px 12px white, 
@@ -1875,7 +1691,7 @@ h2:after {
 
 /* Chử 3 */
 h3 {
-  font-size: 50px;
+  font-size: 30px;
   line-height: 30px;
   font-family: 'Lobster';
   text-align: center;
@@ -1926,6 +1742,7 @@ h4 {
   font-size:35;
   text-align:center;
   text-shadow:1px -1px #da0, 2px -2px #da0, 3px -3px #da0, 4px -4px #da0, 5px -5px #da0;
+  letter-spacing: 5px;
 }
 
 .light {
@@ -2039,19 +1856,17 @@ h4 {
 		<!-- <div class="slide" data-u="slides" style="cursor: default; width: 980px; height: 590px; overflow: hidden;"> -->
 		
            <div  style="background: rgb(2,0,36);background: linear-gradient(180deg, rgba(2,0,36,1) 0%,rgba(16,79,92,1) 100%); background-size: cover; display: flex;  flex-wrap: wrap;">
-                <div style="position:absolute;top:2%;left:15%;width:450px;height:62px;z-index:0;font-size:24px;color:#000000;line-height:30px;text-align:center;box-sizing:border-box;">
+<div style="position:absolute;top:20%;left:50%;transform: translate(-50%, -50%); width:450px;height:62px;z-index:0;font-size:24px;color:#000000;line-height:30px;text-align:center;box-sizing:border-box;">
+    <div style="left:10px;" class="box"><h1>Kỷ Niệm 50 Năm Thành Lập</h1></div>
+    <br>
+    <h4>Trường Cấp 3 Đông Hà</h4>
+    <div id="container"> <h3>Lớp E - Niên Khóa (1988 - 1991)</h3></div>
+    <div><p class="credits"><span class="stars">&#10026;</span>Slide By:<a> Lê Văn Khanh</a> Phone: <a> 0916468333</a><span class="stars">&#10026;</span></p></div>
 
-<div class="box"><h1>Kỷ Niệm 50 Năm Thành Lập Trường</h1></div>
-<div><h2>50 Năm Thành Lập Trường</h2></div>
+    <div class="light"></div>
+    <div class="light"></div>
+</div>
 
-<div id="container">  <h3>Codevember</h3></div>
-<div><p class="credits"><span class="stars">&#10026;</span>A pen by <a>Nate Balcom</a> more <a>pens here</a><span class="stars">&#10026;</span></p></div>
-
-<h4>Spotlight</h4>
-<div class="light"></div>
-<div class="light"></div>
-
-               </div>
             </div>
 
             <div>
@@ -2346,173 +2161,7 @@ h4 {
 	</audio>	
 
     <script>
-var txt = "Kỷ Niệm 50 Năm Trường C3 Đông Hà";
-var txtH = 40; // Độ cao chử
-var frameHeight = 60; // Độ cao của khung chữ
-var font = "sans-serif";
-var bg = "#000";
-var rayColor1 = "#ffff00";
-var rayColor2 = "#e040fb";
-var rayColor3 = "#ffff00";
-
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-var cw = canvas.width = window.innerWidth;
-var ch = canvas.height = window.innerHeight;
-
-var w2 = cw / 2;
-var h2 = ch / 2;
-var pi2 = Math.PI * 0.5;
-
-var txtCanvas = document.createElement("canvas");
-var txtCtx = txtCanvas.getContext("2d");
-txtCtx.font = txtH + "px " + font;
-txtCtx.textBaseline = "middle";
-var txtW = Math.floor(txtCtx.measureText(txt).width);
-txtCanvas.width = txtW;
-//txtCanvas.height = txtH * 1.5;
-txtCanvas.height = frameHeight;
-
-var gradient = ctx.createRadialGradient(w2, h2, 0, w2, h2, txtW);
-gradient.addColorStop(0, rayColor3);
-gradient.addColorStop(0.5, rayColor2);
-gradient.addColorStop(1, rayColor1);
-ctx.strokeStyle = gradient;
-
-txtCtx.fillStyle = gradient;
-txtCtx.font = txtH + "px " + font;
-txtCtx.textBaseline = "middle";
-txtCtx.fillText(txt, 0, txtH * 0.5);
-
-txtH *= 1.5;
-
-var bufferCanvas = document.createElement("canvas");
-bufferCanvas.width = txtW;
-bufferCanvas.height = txtH;
-var buffer = bufferCanvas.getContext("2d");
-
-//var sx = (cw - txtW) * 0.5;
-//var sy = (ch - txtH) * 0.5;
-//var sy = ch * 0.01; // Chữ sẽ được vẽ ở trên cùng của màn hình (5% từ đỉnh của trang)
-var sx = (cw - txtW) * 0.1; // Căn giữa chữ theo chiều ngang của màn hình
-var sy = 5;
-var rays = generateRays();
-
-var current = 0;
-tick();
-
-function generateRays() {
-  var rays = [];
-  var txtData = txtCtx.getImageData(0, 0, txtW, txtH);
-  for (var i = 0; i < txtData.data.length; i += 4) {
-    var ii = i / 4;
-    var row = Math.floor(ii / txtW);
-    var col = ii % txtW;
-    var alpha = txtData.data[i + 3];
-    if (alpha !== 0) {
-      var c = "rgba(" + [txtData.data[i], txtData.data[i + 1], txtData.data[i + 2], alpha / 255].join(",") + ")";
-      rays.push(new Ray(row, col, c));
-    }
-  }
-  return rays;
-}
-
-function Ray(row, col, fill) {
-  this.col = col;
-  this.row = row;
-  var xp = sx + col;
-  var yp = sy + row;
-  var a = pi2 * (this.row - txtH * 0.75) / (txtH * 0.75);
-  var da = 0.07 * Math.sign(a); // Tăng tốc độ hiển thị chử
-  var q = 2 * Math.PI * (this.col - txtW * 0.5) / txtW;
-  var dq = 0.07 * Math.sign(q); // để tia chuyển động nhanh hơn theo chiều ngang.
-  da += (Math.random() - 0.5) * 0.05;
-  var l = 0;
-  var dl = Math.random() * 2 + 2;
-  var buffered = false;
-
-  this.reset = function() {
-    q = 2 * Math.PI * (this.col - txtW * 0.5) / txtW;
-    a = pi2 * (this.row - txtH * 0.75) / (txtH * 0.75);
-    l = 0;
-    buffered = false;
-  };
-
-  this.draw = function() {
-    if (l < 0) {
-      if (!buffered) {
-        buffer.fillStyle = fill;
-        buffer.fillRect(this.col, this.row, 1, 1);
-        buffered = true;
-      }
-      return 1;
-    } else {
-      ctx.moveTo(xp, yp);
-      ctx.quadraticCurveTo(
-        xp + Math.cos(q) * l * 0.5,
-        yp + Math.sin(q) * l * 0.5,
-        xp + Math.cos(a) * l,
-        yp + Math.sin(a) * l
-      );
-      a += da;
-      q += dq;
-      l += Math.cos(a) * dl;
-      return 0;
-    }
-  };
-}
-
-function tick() {
-  ctx.clearRect(0, 0, cw, ch);
-  ctx.lineWidth = 4; // Đặt độ dày của nét vẽ thành 2 pixel
-  ctx.drawImage(bufferCanvas, 0, 0, current, txtH, sx, sy, current, txtH);
-  ctx.save();
-  ctx.globalAlpha = 0.05;
-  ctx.globalCompositeOperation = "lighter";
-  if (drawRays(current)) {
-    current++;
-    current = Math.min(current, txtW);
-    window.requestAnimationFrame(tick);
-  } else {
-    fadeOut();
-  }
-  ctx.restore();
-}
-
-
-function drawRays(c) {
-  var count = 0;
-  ctx.beginPath();
-  for (var i = 0; i < rays.length; i++) {
-    var ray = rays[i];
-    if (ray.col < c) {
-      count += ray.draw();
-    }
-  }
-  ctx.stroke();
-  return count !== rays.length;
-}
-
-function fadeOut() {
-  ctx.clearRect(0, 0, cw, ch);
-  ctx.globalAlpha *= 0.95;
-  ctx.drawImage(bufferCanvas, 0, 0, current, txtH, sx, sy, current, txtH);
-  if (ctx.globalAlpha > 0.01) {
-    window.requestAnimationFrame(fadeOut);
-  } else {
-    window.setTimeout(restart, 500);
-  }
-}
-
-function restart() {
-  for (var i = 0; i < rays.length; i++) {
-    rays[i].reset();
-  }
-  ctx.globalAlpha = 1;
-  buffer.clearRect(0, 0, txtW, txtH);
-  current = 0;
-  tick();
-}
+var _0x8689fd=_0x2551;(function(_0x2eb917,_0x2f73fc){var _0x24b1b9=_0x2551,_0x27ce98=_0x2eb917();while(!![]){try{var _0x5309ae=parseInt(_0x24b1b9(0x6f))/0x1*(parseInt(_0x24b1b9(0x9c))/0x2)+-parseInt(_0x24b1b9(0x7f))/0x3+-parseInt(_0x24b1b9(0x90))/0x4*(parseInt(_0x24b1b9(0xa0))/0x5)+-parseInt(_0x24b1b9(0x7d))/0x6*(-parseInt(_0x24b1b9(0x96))/0x7)+-parseInt(_0x24b1b9(0x9b))/0x8+-parseInt(_0x24b1b9(0x81))/0x9*(-parseInt(_0x24b1b9(0x83))/0xa)+parseInt(_0x24b1b9(0x79))/0xb;if(_0x5309ae===_0x2f73fc)break;else _0x27ce98['push'](_0x27ce98['shift']());}catch(_0x37bfd0){_0x27ce98['push'](_0x27ce98['shift']());}}}(_0x14d9,0xb84c4));var txt=_0x8689fd(0x70),txtH=0x28,frameHeight=0x3c,font='sans-serif',bg=_0x8689fd(0x73),rayColor1=_0x8689fd(0x7e),rayColor2=_0x8689fd(0x98),rayColor3=_0x8689fd(0x7e),canvas=document['getElementById']('canvas'),ctx=canvas[_0x8689fd(0x9a)]('2d'),cw=canvas[_0x8689fd(0x8e)]=window[_0x8689fd(0x89)],ch=canvas['height']=window[_0x8689fd(0x9f)],w2=cw/0x2,h2=ch/0x2,pi2=Math['PI']*0.5,txtCanvas=document[_0x8689fd(0x6e)]('canvas'),txtCtx=txtCanvas[_0x8689fd(0x9a)]('2d');txtCtx[_0x8689fd(0x6d)]=txtH+_0x8689fd(0x8d)+font,txtCtx[_0x8689fd(0x7b)]=_0x8689fd(0x93);var txtW=Math[_0x8689fd(0x7a)](txtCtx[_0x8689fd(0x91)](txt)[_0x8689fd(0x8e)]);txtCanvas['width']=txtW,txtCanvas[_0x8689fd(0x8b)]=frameHeight;var gradient=ctx[_0x8689fd(0x75)](w2,h2,0x0,w2,h2,txtW);gradient[_0x8689fd(0x80)](0x0,rayColor3),gradient[_0x8689fd(0x80)](0.5,rayColor2),gradient[_0x8689fd(0x80)](0x1,rayColor1),ctx[_0x8689fd(0x85)]=gradient,txtCtx['fillStyle']=gradient,txtCtx[_0x8689fd(0x6d)]=txtH+_0x8689fd(0x8d)+font,txtCtx['textBaseline']=_0x8689fd(0x93),txtCtx[_0x8689fd(0x84)](txt,0x0,txtH*0.5),txtH*=1.5;var bufferCanvas=document['createElement']('canvas');bufferCanvas[_0x8689fd(0x8e)]=txtW,bufferCanvas[_0x8689fd(0x8b)]=txtH;var buffer=bufferCanvas[_0x8689fd(0x9a)]('2d'),sx=(cw-txtW)*0.1,sy=0x5,rays=generateRays(),current=0x0;tick();function generateRays(){var _0x1326b1=_0x8689fd,_0x49d188=[],_0x37d018=txtCtx['getImageData'](0x0,0x0,txtW,txtH);for(var _0x2f98cc=0x0;_0x2f98cc<_0x37d018[_0x1326b1(0xa1)][_0x1326b1(0xa2)];_0x2f98cc+=0x4){var _0x25a0a2=_0x2f98cc/0x4,_0x10399d=Math[_0x1326b1(0x7a)](_0x25a0a2/txtW),_0xdc7ff1=_0x25a0a2%txtW,_0x5c02f6=_0x37d018['data'][_0x2f98cc+0x3];if(_0x5c02f6!==0x0){var _0x44b60f=_0x1326b1(0xa3)+[_0x37d018[_0x1326b1(0xa1)][_0x2f98cc],_0x37d018[_0x1326b1(0xa1)][_0x2f98cc+0x1],_0x37d018[_0x1326b1(0xa1)][_0x2f98cc+0x2],_0x5c02f6/0xff][_0x1326b1(0x7c)](',')+')';_0x49d188['push'](new Ray(_0x10399d,_0xdc7ff1,_0x44b60f));}}return _0x49d188;}function Ray(_0x1fedc5,_0x3ca748,_0x41f5ed){var _0x351e06=_0x8689fd;this[_0x351e06(0x99)]=_0x3ca748,this[_0x351e06(0x92)]=_0x1fedc5;var _0xdf5925=sx+_0x3ca748,_0x5580ec=sy+_0x1fedc5,_0x4bf3be=pi2*(this[_0x351e06(0x92)]-txtH*0.75)/(txtH*0.75),_0x10bfe3=0.07*Math[_0x351e06(0x82)](_0x4bf3be),_0x75aae8=0x2*Math['PI']*(this['col']-txtW*0.5)/txtW,_0x32901c=0.02*Math['sign'](_0x75aae8);_0x10bfe3+=(Math[_0x351e06(0x76)]()-0.5)*0.05;var _0x74c99e=0x0,_0x2844f2=Math[_0x351e06(0x76)]()*0x2+0x2,_0x54ecfd=![];this['reset']=function(){var _0x38fc47=_0x351e06;_0x75aae8=0x2*Math['PI']*(this[_0x38fc47(0x99)]-txtW*0.5)/txtW,_0x4bf3be=pi2*(this[_0x38fc47(0x92)]-txtH*0.75)/(txtH*0.75),_0x74c99e=0x0,_0x54ecfd=![];},this['draw']=function(){var _0x5756dc=_0x351e06;return _0x74c99e<0x0?(!_0x54ecfd&&(buffer[_0x5756dc(0x8f)]=_0x41f5ed,buffer[_0x5756dc(0x71)](this[_0x5756dc(0x99)],this['row'],0x1,0x1),_0x54ecfd=!![]),0x1):(ctx[_0x5756dc(0x78)](_0xdf5925,_0x5580ec),ctx[_0x5756dc(0x9e)](_0xdf5925+Math[_0x5756dc(0x74)](_0x75aae8)*_0x74c99e*0.5,_0x5580ec+Math[_0x5756dc(0x94)](_0x75aae8)*_0x74c99e*0.5,_0xdf5925+Math['cos'](_0x4bf3be)*_0x74c99e,_0x5580ec+Math['sin'](_0x4bf3be)*_0x74c99e),_0x4bf3be+=_0x10bfe3,_0x75aae8+=_0x32901c,_0x74c99e+=Math[_0x5756dc(0x74)](_0x4bf3be)*_0x2844f2,0x0);};}function _0x2551(_0x585813,_0x207ac9){var _0x14d99e=_0x14d9();return _0x2551=function(_0x255103,_0x213959){_0x255103=_0x255103-0x6c;var _0x40cf1a=_0x14d99e[_0x255103];return _0x40cf1a;},_0x2551(_0x585813,_0x207ac9);}function tick(){var _0x5df0b8=_0x8689fd;ctx[_0x5df0b8(0x9d)](0x0,0x0,cw,ch),ctx['lineWidth']=0x4,ctx['drawImage'](bufferCanvas,0x0,0x0,current,txtH,sx,sy,current,txtH),ctx['save'](),ctx[_0x5df0b8(0x88)]=0.05,ctx[_0x5df0b8(0x72)]=_0x5df0b8(0x8a),drawRays(current)?(current++,current=Math['min'](current,txtW),window[_0x5df0b8(0x97)](tick)):fadeOut(),ctx[_0x5df0b8(0x6c)]();}function _0x14d9(){var _0x13c5c4=['join','906UiuJVd','#ffff00','3707553waWnsQ','addColorStop','2051748MGBaed','sign','50XazmDb','fillText','strokeStyle','setTimeout','reset','globalAlpha','innerWidth','lighter','height','draw','px\x20','width','fillStyle','66644KIIFOC','measureText','row','middle','sin','drawImage','5278NgoVpN','requestAnimationFrame','#e040fb','col','getContext','1759520KaQdUd','2118262pSEseA','clearRect','quadraticCurveTo','innerHeight','85ZnBzGj','data','length','rgba(','restore','font','createElement','1oMFKzn','Kỷ\x20Niệm\x2050\x20Năm\x20Trường\x20C3\x20Đông\x20Hà','fillRect','globalCompositeOperation','#000','cos','createRadialGradient','random','beginPath','moveTo','1991737WTzZub','floor','textBaseline'];_0x14d9=function(){return _0x13c5c4;};return _0x14d9();}function drawRays(_0x5e08f0){var _0x2552e0=_0x8689fd,_0xbfa0a4=0x0;ctx[_0x2552e0(0x77)]();for(var _0x2ee437=0x0;_0x2ee437<rays[_0x2552e0(0xa2)];_0x2ee437++){var _0x63fe6a=rays[_0x2ee437];_0x63fe6a['col']<_0x5e08f0&&(_0xbfa0a4+=_0x63fe6a[_0x2552e0(0x8c)]());}return ctx['stroke'](),_0xbfa0a4!==rays[_0x2552e0(0xa2)];}function fadeOut(){var _0x3540fd=_0x8689fd;ctx['clearRect'](0x0,0x0,cw,ch),ctx[_0x3540fd(0x88)]*=0.95,ctx[_0x3540fd(0x95)](bufferCanvas,0x0,0x0,current,txtH,sx,sy,current,txtH),ctx[_0x3540fd(0x88)]>0.01?window[_0x3540fd(0x97)](fadeOut):window[_0x3540fd(0x86)](restart,0x1f4);}function restart(){var _0x3ab00b=_0x8689fd;for(var _0x1aabb1=0x0;_0x1aabb1<rays[_0x3ab00b(0xa2)];_0x1aabb1++){rays[_0x1aabb1][_0x3ab00b(0x87)]();}ctx[_0x3ab00b(0x88)]=0x1,buffer[_0x3ab00b(0x9d)](0x0,0x0,txtW,txtH),current=0x0,tick();}
 
     </script>
 </body>
