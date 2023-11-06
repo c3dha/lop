@@ -1510,12 +1510,8 @@ body {
 
 /* End Background */
 
-
 /* Chử 1 */
 /* https://codepen.io/ProTechThor/pen/KebyvM */
-
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-
 
 .box {
 
@@ -1531,97 +1527,124 @@ body {
     0px -18px 70px red;
   animation: burn 0.5s infinite;
 }
-h1{
-  font-size:29px;
-  text-align: center;
-  color:white;
-  text-transform: uppercase;
-  text-shadow:  
-   0px -2px 12px white, 
-    0px -3px 30px yellow, 
-    0px -12px 50px #ff8000, 
-    0px -20px 70px red;
-  animation: burn 2s infinite;
+
+
+
+
+h1
+{
+/*   margin-top:200px; */
+font-family: "Times New Roman", Times, serif;
+}
+.lamp {
+  position: relative;
+  top: 170px;
+  margin: 0 auto;
+  height: 70px;
+  width: 70px;
+  background-color: brow;
+  border-radius: 0px 10px 100% 0px;
+  border-bottom: 3px solid rgb(144, 17, 58);
+  box-shadow: inset 0 -50px 50px -20px rgb(144, 17, 58);
 }
 
-@keyframes burn
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;
-  
+.lamp:before {
+  content: '';
+  display: block;
+  height: 70px;
+  width: 70px;
+  margin-left: -70px;
+  background-color: lightb;
+  border-radius: 10px 0px 0px 100%;
+  box-shadow: inset 0 -50px 50px -20px rgb(144, 17, 58);
+  border-bottom: 3px solid rgb(144, 17, 58);
+}
+
+.flame {
+  position: absolute;
+  top: -65px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  background: OrangeRed;
+  border-radius: 0 110px 20px 110px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+.flame:after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: OrangeRed;
+  border-radius: 0 110px 20px 110px;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  animation: flame_glare 1.5s linear infinite;
+  -webkit-animation: flame_glare 1.5s linear infinite;
+  -moz-animation: flame_glare 1.5s linear infinite;
+}
+
+.top {
+  position: absolute;
+  top: -40px;
+  left: -70px;
+  height: 85px;
+  width: 120px;
+  background-color: brown;
+  border-radius: 100%;
+  border-left: 10px solid rgb(144, 17, 58);
+  border-right: 10px solid rgb(144, 17, 58);
+  transform: rotateX(-60deg);
+  -webkit-transform: rotateX(-60deg);
+  -moz-transform: rotateX(-60deg);
+  background: radial-gradient(OrangeRed, rgb(214, 23, 92) 40%, rgb(144, 17, 58));
+  background: -webkit-radial-gradient(OrangeRed, rgb(214, 23, 92) 40%, rgb(144, 17, 58));
+  background: -moz-radial-gradient(OrangeRed, rgb(214, 23, 92) 40%, rgb(144, 17, 58));
+}
+
+@keyframes flame_glare {
+  0% {
+    transform: scale(0);
+    opacity: 0;
   }
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;
- 
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
-
-@-moz-keyframes burn
+@keyframes glow
 {
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
+    0% { text-shadow: 0 0 10px violet, 0 0 20px #fff, 0 0 30px #EAB72F, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #EAB72F, 0 0 70px #EA5C2F}
+    25% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fafa05, 0 0 40px #fafa05, 0 0 50px #2fa9ea, 0 0 60px #2fa9ea, 0 0 70px }
+    50% { textShadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #362FEA, 0 0 60px #e60073, 0 0 70px #362FEA}
+    100% { textShadow: 0 0 10px #fff, 0 0 20px #ff4da6, 0 0 30px #362FEA, 0 0 40px #EA5C2F, 0 0 50px #EAB72F, 0 0 60px #ff4da6, 0 0 70px #ff4da6}
 }
 
-@-webkit-keyframes burn
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
+.grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 3rem;
+    font-size: 30px; /* Thay đổi kích thước chữ ở đây */
+	line-height: 3; /* Thay đổi khoảng cách giữa các dòng ở đây */
+}
+.glow {
+    font-size: 32px; /* Kích thước chữ của phần tử có lớp .glow */
+    color: #fff;
+    text-align: center;
+    animation: glow 1s infinite ease-in-out alternate;
 }
 
-@-o-keyframes burn
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
-}
 
 /* End Chử 1 */
-
 
 /* Chử 2 */
 /* https://codepen.io/newred/pen/dymXYzN */
@@ -1631,8 +1654,7 @@ h2 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #fff;
-font-family: 'Playfair Display', serif;
-	
+    font-family: "Times New Roman", Times, serif;
 	font-size:30px;
 	margin: 0;
 	font-weight: 900;
@@ -1658,13 +1680,13 @@ h2:after {
 h3 {
   font-size: 25px;
   line-height: 30px;
-  font-family: 'Lobster';
-  color: #FFF;
+  color:white; /* Màu vàng trong định dạng hex */
   text-align: center;
-  text-shadow: rgba(255, 168, 6, .8) 4px 2px 2px;
+  text-shadow: 4px 2px 2px rgba(white, 0.8); /* Shadow màu vàng (rgba) */
   /*text stroke*/
-  -webkit-text-stroke: 3px rgba(100, 81, 0, .65);
+  -webkit-text-stroke: 3px rgba(100, 81, 0, 0.65);
 }
+
 
 
 /* SIGNATURE CODE */
@@ -1705,7 +1727,7 @@ a:hover {
 h2 {
   font-size: 40px;
   line-height: 30px;
-  font-family: 'Lobster';
+  font-family: "Times New Roman", Times, serif;
   color: #FFF;
   text-align: center;
   text-shadow: rgba(255, 168, 6, .8) 4px 2px 2px;
@@ -1734,7 +1756,7 @@ a:hover {
 
 .credits {
   text-align: center;
-  font-family: 'Lobster';
+
   font-size: 1.5vw;
   color: #FFF;
 }
@@ -1752,7 +1774,7 @@ a:hover {
 /* Chử 4 */
 h4 {
   color:#fc0;
-  font-family:Impact,Charcoal, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   font-size:35;
   text-align:center;
   text-shadow:1px -1px #da0, 2px -2px #da0, 3px -3px #da0, 4px -4px #da0, 5px -5px #da0;
@@ -1861,8 +1883,8 @@ h4 {
 	
     <div id="jssor_1" style="position:relative;margin:0 auto;top:5px;left:0px;width:980px;height:590px;overflow:hidden;visibility:hidden;">
 	<!-- <canvas id="canvas"></canvas> -->
-	<div style="top:2px;z-index:9999;" id="container"><h2>Lớp E - Niên Khóa (1988 - 1991)</h2></div>
-        <div class="slide" data-u="slides" style="cursor:default;position:relative;top:40px;left:0px;width:980px;height:590px;overflow:hidden;">
+	<!-- <div style="top:2px;z-index:9999;" id="container"><h2>Lớp E - Niên Khóa (1988 - 1991)</h2></div> -->
+        <div class="slide" data-u="slides" style="cursor:default;position:relative;top:10px;left:0px;width:980px;height:590px;overflow:hidden;">
 
 		<!-- <div id="jssor_1" style="margin: 0 auto; top: 0px; width: 980px; height: 590px; overflow: hidden; visibility: hidden;"> -->
 		<!-- <canvas id="canvas"></canvas> -->
@@ -1870,10 +1892,11 @@ h4 {
 		
            <div  style="background: rgb(2,0,36);background: linear-gradient(180deg, rgba(2,0,36,1) 0%,rgba(16,79,92,1) 100%); background-size: cover; display: flex;  flex-wrap: wrap;">
 				<div style="position:absolute;top:20%;left:50%;transform: translate(-50%, -50%); width:450px;height:62px;z-index:0;font-size:24px;color:#000000;line-height:30px;text-align:center;box-sizing:border-box;">
-					<div style="left:10px;" class="box"><h1>Kỷ Niệm 50 Năm Thành Lập</h1></div>
-					<br>
+					<!-- <div style="left:10px;" class="box"><h1>Kỷ Niệm 50 Năm Thành Lập</h1></div> -->
+					 <h1 class="glow" style="color:white">Kỷ Niệm 50 Năm Thành Lập</h1>
+				
 					<h4>Trường Cấp 3 Đông Hà</h4>
-					<div id="container"> <h3>Lớp E - Niên Khóa (1988 - 1991)</h3></div>
+					<div class="glow" id="container"> <h3>Lớp E - Niên Khóa (1988 - 1991)</h3></div>
 					<div><p class="credits"><span class="stars">&#10026;</span>Slide By:<a> Lê Văn Khanh</a> Phone: <a> 0916468333</a><span class="stars">&#10026;</span></p></div>
 
 					<div class="light"></div>
