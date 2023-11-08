@@ -1528,14 +1528,21 @@ body {
   animation: burn 0.5s infinite;
 }
 
-
-
-
-h1
-{
-/*   margin-top:200px; */
-font-family: "Times New Roman", Times, serif;
+h1 {
+  font-family: "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:35px;
+  padding: 30px 10px;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  line-height:35px;
 }
+h1.longshadow {
+  color: #131313;
+  letter-spacing: .15em;
+text-shadow: 1px -1px 0 #767676, -1px 2px 1px #737272, -2px 4px 1px #767474, -3px 6px 1px #787777, -4px 8px 1px #7b7a7a, -5px 7px 1px #7f7d7d, -6px 7px 1px #828181, -7px 7px 1px #868585;
+
+}
+
 .lamp {
   position: relative;
   top: 170px;
@@ -1723,7 +1730,7 @@ a:hover {
 
 /* End Chử 3 */
 
-/* Chử 3.5 */
+/* Chử h2 */
 h2 {
   font-size: 40px;
   line-height: 30px;
@@ -1768,17 +1775,17 @@ a:hover {
 }
 
 
-/* End Chử 3.5 */
+/* End Chử h2 */
 
 
-/* Chử 4 */
+/* Chử h4 */
 h4 {
   color:#fc0;
   font-family: "Times New Roman", Times, serif;
-  font-size:35;
+  font-size:29;
   text-align:center;
   text-shadow:1px -1px #da0, 2px -2px #da0, 3px -3px #da0, 4px -4px #da0, 5px -5px #da0;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
 
 .light {
@@ -1818,14 +1825,16 @@ h4 {
     transform:rotate(-70deg);
   }
 }
-/* End Chử 4 */
+/* End Chử h4 */
+
 
 /* Chử 5 */
 	p{
     margin:.2em 0;
 		text-align:center;
 		bottom:0;
-		font-size:35px;	
+		font-size:30px;
+		line-height:30px;		
 	}
 
 	span{
@@ -1875,7 +1884,8 @@ h4 {
 		background-position:-500px;
 	}
 /* End Chử 5 */
-	
+
+
 </style>
 
 </head>
@@ -1938,18 +1948,14 @@ h4 {
 	<!-- Slide ảnh -->	
 	
     <div id="jssor_1" style="position:relative;margin:0 auto;top:5px;left:0px;width:980px;height:590px;overflow:hidden;visibility:hidden;">
-	<!-- <canvas id="canvas"></canvas> -->
-	<!-- <div style="top:2px;z-index:9999;" id="container"><h2>Lớp E - Niên Khóa (1988 - 1991)</h2></div> -->
         <div class="slide" data-u="slides" style="cursor:default;position:relative;top:10px;left:0px;width:980px;height:590px;overflow:hidden;">
 
-		<!-- <div id="jssor_1" style="margin: 0 auto; top: 0px; width: 980px; height: 590px; overflow: hidden; visibility: hidden;"> -->
-		<!-- <canvas id="canvas"></canvas> -->
-		<!-- <div class="slide" data-u="slides" style="cursor: default; width: 980px; height: 590px; overflow: hidden;"> -->
 		
            <div  style="background: rgb(2,0,36);background: linear-gradient(180deg, rgba(2,0,36,1) 0%,rgba(16,79,92,1) 100%); background-size: cover; display: flex;  flex-wrap: wrap;">
-				<div style="position:absolute;top:15%;left:50%;font-size:50px;transform: translate(-50%, -50%); width:450px;height:62px;z-index:0;color:#000000;line-height:30px;text-align:center;box-sizing:border-box;">
+				<div style="position:absolute;top:10%;left:50%;font-size:35px;transform: translate(-50%, -50%); width:450px;height:62px;z-index:0;color:#000000;line-height:5px;text-align:center;box-sizing:border-box;">
 					<!-- <div style="left:10px;" class="box"><h1>Kỷ Niệm 50 Năm Thành Lập</h1></div> -->
-					 <h1 class="glow" style="color:white">Kỷ Niệm 50 Năm Thành Lập</h1>
+
+					<h1 class='longshadow' style="color:white">Kỷ Niệm 50 Năm Thành Lập</h1>
 				
 					<h4>Trường Cấp 3</h4>
 					<h4>Đông Hà</h4>
@@ -1990,6 +1996,7 @@ h4 {
 
 					<div class="light"></div>
 					<div class="light"></div>
+					
 				</div>
 
             </div>
