@@ -1530,11 +1530,11 @@ body {
 
 h1 {
   font-family: "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-  font-size:40px;
-  padding: 30px 10px;
+  font-size:35px;
+  padding: 20px 10px;
   text-align: center;
   text-rendering: optimizeLegibility;
-  line-height:35px;
+  line-height:40px;
 }
 h1.longshadow {
   color: #131313;
@@ -1654,32 +1654,18 @@ text-shadow: 1px -1px 0 #767676, -1px 2px 1px #737272, -2px 4px 1px #767474, -3p
 /* End Chử 1 */
 
 /* Chử 2 */
-/* https://codepen.io/newred/pen/dymXYzN */
-
 h2 {
-    background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #fff;
-    font-family: "Times New Roman", Times, serif;
-	font-size:30px;
-	margin: 0;
-	font-weight: 900;
+  position: relative; /* Sử dụng position: relative; để giữ phần tử trong vị trí bình thường */
+  background: url("Slider-master_OK/ImgChu.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  line-height:40px;
+  font-size: 35px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
-h2:after {
-    background: none;
-    content: attr(data-heading);
-    left: 0;
-	top: 0;
-    z-index: -1;
-    position: absolute;
-    text-shadow: 
-		-1px 0 1px #c6bb9f, 
-		0 1px 1px #c6bb9f, 
-		5px 5px 10px rgba(0, 0, 0, 0.4),
-		-5px -5px 10px rgba(0, 0, 0, 0.4);
-}
 /* End Chử 2 */
 
 
@@ -1729,53 +1715,6 @@ a:hover {
 
 
 /* End Chử 3 */
-
-/* Chử h2 */
-h2 {
-  font-size: 40px;
-  line-height: 30px;
-  font-family: "Times New Roman", Times, serif;
-  color: #FFF;
-  text-align: center;
-  text-shadow: rgba(255, 168, 6, .8) 4px 2px 2px;
-  /*text stroke*/
-  -webkit-text-stroke: 3px rgba(100, 81, 0, .65);
-}
-
-
-/* SIGNATURE CODE */
-
-a {
-  color: #f77d06;
-  -o-transition: color .5s ease-out, background 7s ease-in;
-  -ms-transition: color .5s ease-out, background 7s ease-in;
-  -moz-transition: color .5s ease-out, background 7s ease-in;
-  -webkit-transition: color .5s ease-out, background 7s ease-in;
-  transition: color .5s ease-out, background 7s ease-in;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #FFF;
-  background: none;
-  text-decoration: none;
-}
-
-.credits {
-  text-align: center;
-
-  font-size: 1.5vw;
-  color: #FFF;
-}
-
-.stars {
-  color: #f43a2f;
-  padding: 0 .5vw 0 .5vw;
-  font-size: 1.6vw;
-}
-
-
-/* End Chử h2 */
 
 
 /* Chử h4 */
@@ -1885,6 +1824,75 @@ h4 {
 	}
 /* End Chử 5 */
 
+@media only screen and (max-width: 990px){
+	h1 {
+	  font-size:30px;
+	}
+	h2 {
+	  font-size:30px;
+	}
+	h3 {
+	  font-size:30px;
+	}
+	h4 {
+	  font-size:30px;
+	}
+	p {
+	  font-size:25px;
+	}
+
+}
+@media only screen and (max-width: 767px){
+	h1 {
+	  font-size:30px;
+	}
+	h2 {
+	  font-size:30px;
+	}
+	h3 {
+	  font-size:30px;
+	}
+	h4 {
+	  font-size:30px;
+	}
+	p {
+	  font-size:25px;
+	}
+}
+@media only screen and (max-width: 479px){
+	h1 {
+	  font-size:30px;
+	}
+	h2 {
+	  font-size:30px;
+	}
+	h3 {
+	  font-size:30px;
+	}
+	h4 {
+	  font-size:30px;
+	}
+	p {
+	  font-size:25px;
+	}
+}
+@media only screen and (max-width: 359px){
+	h1 {
+	  font-size:30px;
+	}
+	h2 {
+	  font-size:30px;
+	}
+	h3 {
+	  font-size:30px;
+	}
+	h4 {
+	  font-size:30px;
+	}
+	p {
+	  font-size:25px;
+	}
+}
 
 </style>
 
@@ -1960,37 +1968,10 @@ h4 {
 					<h4>Trường Cấp 3</h4>
 					<h4>Đông Hà</h4>
 					<!-- <div class="glow" id="container"> <h3>Lớp E - Niên Khóa (1988 - 1991)</h3></div> -->
-					
-					<!-- <p><span>Lớp E</span></p> -->	
-                    <!-- <p><span>Niên Khóa (1988 - 1991)</span></p> -->
-					<p style="font-family:'Bubblegum Sans';font-weight:bold;">
-					<span>L</span>
-					<span>ớ</span>
-					<span>p</span>
-					<span></span> 					
-					<span>E</span>
-					 </p>
-					  <p  style="font-family:'Bubblegum Sans';font-weight:bold;">
 
-					<!-- <span>K</span>
-					<span>h</span>
-					<span>o</span>
-					<span>á</span>
-					<span></span> -->
-					<span>(</span>
-					<span>1</span>
-					<span>9</span>
-					<span>8</span>
-					<span>8</span>
-					<span></span>
-					<span>-</span>
-					<span>1</span>
-					<span>9</span>
-					<span>9</span>
-					<span>1</span>
-					<span>)</span>
-					 </p>					
-					
+					<h2>Lớp E</h2>
+					<h2>Khóa 1988 - 1991</h2>
+					 
 					<div><p style="font-size:20px;" class="credits"><span class="stars">&#10026;</span>Slide By:<a> Lê Văn Khanh</a> Phone: <a> 0916468333</a><span class="stars">&#10026;</span></p></div>
 
 					<div class="light"></div>
